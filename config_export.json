@@ -1,0 +1,160 @@
+{
+  "ENVIRONMENT": "development",
+  "DEBUG": false,
+  "APP_NAME": "Trivya Platform",
+  "APP_VERSION": "1.0.0",
+  "HOST": "0.0.0.0",
+  "PORT": 8000,
+  "WORKERS": 4,
+  "RELOAD": false,
+  "database": {
+    "POSTGRES_HOST": "prod-db.example.com",
+    "POSTGRES_PORT": 5432,
+    "POSTGRES_USER": "trivya_prod",
+    "POSTGRES_PASSWORD": "***REDACTED***",
+    "POSTGRES_DB": "trivya_prod",
+    "DB_POOL_SIZE": 10,
+    "DB_MAX_OVERFLOW": 20,
+    "DB_POOL_TIMEOUT": 30,
+    "DB_POOL_RECYCLE": 3600,
+    "DB_ECHO": false,
+    "DB_STATEMENT_TIMEOUT": 30000
+  },
+  "cache": {
+    "REDIS_HOST": "localhost",
+    "REDIS_PORT": 6379,
+    "REDIS_PASSWORD": "***REDACTED***",
+    "REDIS_DB": 0,
+    "REDIS_SSL": false,
+    "REDIS_MAX_CONNECTIONS": 50,
+    "REDIS_SOCKET_TIMEOUT": 5,
+    "REDIS_SOCKET_CONNECT_TIMEOUT": 5,
+    "CACHE_TTL_DEFAULT": 300,
+    "CACHE_TTL_SHORT": 60,
+    "CACHE_TTL_LONG": 3600
+  },
+  "queue": {
+    "BROKER_HOST": "localhost",
+    "BROKER_PORT": 6379,
+    "BROKER_PASSWORD": "***REDACTED***",
+    "BROKER_DB": 1,
+    "RESULT_BACKEND_HOST": "localhost",
+    "RESULT_BACKEND_PORT": 6379,
+    "RESULT_BACKEND_DB": 2,
+    "TASK_SOFT_TIME_LIMIT": 300,
+    "TASK_TIME_LIMIT": 360,
+    "TASK_MAX_RETRIES": 3,
+    "TASK_DEFAULT_QUEUE": "default"
+  },
+  "security": {
+    "SECRET_KEY": "***REDACTED***",
+    "JWT_SECRET_KEY": "***REDACTED***",
+    "ENCRYPTION_KEY": "***REDACTED***",
+    "JWT_ALGORITHM": "HS256",
+    "JWT_ACCESS_TOKEN_EXPIRE_MINUTES": 30,
+    "JWT_REFRESH_TOKEN_EXPIRE_DAYS": 7,
+    "PASSWORD_MIN_LENGTH": 8,
+    "PASSWORD_REQUIRE_UPPERCASE": true,
+    "PASSWORD_REQUIRE_LOWERCASE": true,
+    "PASSWORD_REQUIRE_DIGITS": true,
+    "PASSWORD_REQUIRE_SPECIAL": true,
+    "CORS_ORIGINS": [
+      "http://localhost:3000"
+    ],
+    "CORS_CREDENTIALS": true,
+    "CORS_METHODS": [
+      "*"
+    ],
+    "CORS_HEADERS": [
+      "*"
+    ],
+    "RATE_LIMIT_ENABLED": true,
+    "RATE_LIMIT_PER_MINUTE": 60,
+    "RATE_LIMIT_PER_HOUR": 1000
+  },
+  "logging": {
+    "LOG_LEVEL": "INFO",
+    "LOG_FORMAT": "%(asctime)s - %(name)s - %(levelname)s - %(message)s",
+    "LOG_FILE_ENABLED": true,
+    "LOG_FILE_PATH": "logs/trivya.log",
+    "LOG_FILE_MAX_BYTES": 10485760,
+    "LOG_FILE_BACKUP_COUNT": 5,
+    "LOG_JSON_FORMAT": false,
+    "LOG_SENSITIVE_DATA": false
+  },
+  "api": {
+    "API_V1_PREFIX": "/api/v1",
+    "API_TITLE": "Trivya Platform API",
+    "API_DESCRIPTION": "AI-Powered Customer Support Platform",
+    "API_VERSION": "1.0.0",
+    "DOCS_ENABLED": true,
+    "DOCS_URL": "/docs",
+    "REDOC_URL": "/redoc",
+    "MAX_REQUEST_SIZE": 10485760,
+    "REQUEST_TIMEOUT": 30
+  },
+  "ai": {
+    "OPENAI_API_KEY": "***REDACTED***",
+    "OPENAI_MODEL": "gpt-4",
+    "OPENAI_TEMPERATURE": 0.7,
+    "OPENAI_MAX_TOKENS": 2000,
+    "OPENAI_TIMEOUT": 30,
+    "ANTHROPIC_API_KEY": "***REDACTED***",
+    "ANTHROPIC_MODEL": "claude-3-opus-20240229",
+    "LANGCHAIN_TRACING_V2": false,
+    "LANGCHAIN_API_KEY": "***REDACTED***",
+    "LANGCHAIN_PROJECT": null,
+    "CREWAI_TELEMETRY_ENABLED": false,
+    "DEFAULT_AI_PROVIDER": "openai",
+    "AI_RETRY_ATTEMPTS": 3,
+    "AI_RETRY_DELAY": 1
+  },
+  "trivya_variants": {
+    "MINI_TRIVYA_ENABLED": true,
+    "MINI_TRIVYA_CONCURRENT_CALLS": 2,
+    "MINI_TRIVYA_DESCRIPTION": "The AI Freshy Support Agent",
+    "TRIVYA_ENABLED": true,
+    "TRIVYA_CONCURRENT_CALLS": 3,
+    "TRIVYA_DESCRIPTION": "The AI Junior Customer Support Agent",
+    "TRIVYA_HIGH_ENABLED": true,
+    "TRIVYA_HIGH_CONCURRENT_CALLS": 5,
+    "TRIVYA_HIGH_DESCRIPTION": "The AI Senior Customer Support Agent",
+    "REFUND_EXECUTION_ENABLED": false,
+    "HUMAN_IN_THE_LOOP_THRESHOLD": 0.7
+  },
+  "mcp": {
+    "MCP_SERVER_ENABLED": true,
+    "MCP_SERVER_HOST": "localhost",
+    "MCP_SERVER_PORT": 8081,
+    "MCP_TELEPHONY_PROVIDER": "twilio",
+    "MCP_VECTOR_DB_PROVIDER": "chromadb",
+    "MCP_CRM_PROVIDER": "hubspot"
+  },
+  "external_apis": {
+    "TWILIO_ACCOUNT_SID": "***REDACTED***",
+    "TWILIO_AUTH_TOKEN": "***REDACTED***",
+    "TWILIO_PHONE_NUMBER": null,
+    "TWILIO_WEBHOOK_URL": null,
+    "CRM_API_KEY": "***REDACTED***",
+    "CRM_WEBHOOK_SECRET": "***REDACTED***",
+    "TICKETING_API_KEY": "***REDACTED***",
+    "TICKETING_WEBHOOK_SECRET": "***REDACTED***",
+    "ECOMMERCE_API_KEY": "***REDACTED***",
+    "ECOMMERCE_WEBHOOK_SECRET": "***REDACTED***"
+  },
+  "monitoring": {
+    "PROMETHEUS_ENABLED": true,
+    "PROMETHEUS_PORT": 9090,
+    "PROMETHEUS_ENDPOINT": "/metrics",
+    "GRAFANA_ENABLED": true,
+    "GRAFANA_PORT": 3001,
+    "GRAFANA_ADMIN_PASSWORD": "***REDACTED***",
+    "SENTRY_DSN": "***REDACTED***",
+    "SENTRY_ENVIRONMENT": null
+  },
+  "FEATURE_USER_REGISTRATION": true,
+  "FEATURE_SOCIAL_AUTH": false,
+  "FEATURE_AI_GENERATION": true,
+  "FEATURE_REAL_TIME_MULTIPLAYER": false,
+  "BASE_DIR": "C:\\Users\\kingthakur\\Documents\\trivya_platform"
+}

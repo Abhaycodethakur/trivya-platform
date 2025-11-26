@@ -1,0 +1,105 @@
+name: Security Scan
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  schedule:
+    - cron: '0 2 * * *'  # Run daily at 2 AM UTC
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install safety bandit semgrep
+        pip install -r requirements.txt
+    
+    - name: Run Bandit security linter
+      run: |
+        bandit -r shared/ -f json -o bandit-report.json
+        bandit -r shared/ -f txt -o bandit-report.txt
+    
+    - name: Run Safety dependency check
+      run: |
+        safety check --json --output safety-report.json
+        safety check --full-report --output safety-report.txt
+    
+    - name: Run Semgrep
+      uses: returntocorp/semgrep-action@v1
+      with:
+        config: >-
+          p/security-audit
+          p/secrets
+          p/owasp-top-ten
+        generate-sarif: true
+    
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: semgrep.sarif
+    
+    - name: Docker security scan
+      run: |
+        docker build -t trivya-backend-test ./backend
+        docker run --rm -v /var/run/docker.sock:/var/run/docker.sock \
+          -v $PWD:/root/.cache/ aquasec/trivy:latest image \
+          --exit-code 0 --no-progress --format json \
+          --output trivy-report.json trivya-backend-test
+    
+    - name: Upload security reports
+      uses: actions/upload-artifact@v3
+      with:
+        name: security-reports
+        path: |
+          bandit-report.json
+          bandit-report.txt
+          safety-report.json
+          safety-report.txt
+          semgrep.sarif
+          trivy-report.json
+    
+    - name: Comment PR with security results
+      if: github.event_name == 'pull_request'
+      uses: actions/github-script@v6
+      with:
+        script: |
+          const fs = require('fs');
+          const path = require('path');
+          
+          const banditReport = JSON.parse(fs.readFileSync('bandit-report.json', 'utf8'));
+          const safetyReport = JSON.parse(fs.readFileSync('safety-report.json', 'utf8'));
+          
+          const comment = `
+          ## 🔒 Security Scan Results
+          
+          ### Bandit (Python Security Linter)
+          - Issues found: ${banditReport.results.length}
+          - High severity: ${banditReport.results.filter(r => r.issue_severity === 'HIGH').length}
+          - Medium severity: ${banditReport.results.filter(r => r.issue_severity === 'MEDIUM').length}
+          
+          ### Safety (Dependency Security)
+          - Vulnerabilities found: ${safetyReport.vulnerabilities.length}
+          - High severity: ${safetyReport.vulnerabilities.filter(v => v.advisory.severity === 'high').length}
+          - Medium severity: ${safetyReport.vulnerabilities.filter(v => v.advisory.severity === 'medium').length}
+          
+          [View detailed reports in the artifacts section]
+          `;
+          
+          github.rest.issues.createComment({
+            issue_number: context.issue.number,
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            body: comment
+          });

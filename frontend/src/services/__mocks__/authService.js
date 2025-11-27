@@ -24,6 +24,27 @@ export const login = (email, password) => {
     });
 };
 
+export const signup = (name, email, password) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            // Simulate simple validation
+            if (email === 'exists@example.com') {
+                reject({
+                    message: 'Email already exists. Please use a different email.'
+                });
+            } else {
+                resolve({
+                    id: Math.floor(Math.random() * 1000),
+                    name: name,
+                    email: email,
+                    token: 'fake-jwt-token-' + Date.now()
+                });
+            }
+        }, 1500); // Simulate 1.5 second network delay for signup
+    });
+};
+
 export default {
-    login
+    login,
+    signup
 };

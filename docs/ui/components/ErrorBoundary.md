@@ -38,3 +38,6 @@ const logErrorToService = (error, info) => {
   <Dashboard />
 </ErrorBoundary>
 ```
+
+### Integration Note
+This component is designed to work seamlessly with the Trivya design system. It uses the global color variables and provides a consistent "Something went wrong" experience across the platform.

@@ -1,0 +1,219 @@
+STDOUT:
+============================= test session starts =============================
+platform win32 -- Python 3.11.7, pytest-9.0.1, pluggy-1.6.0
+rootdir: C:\Users\kingthakur\Desktop\trivya
+plugins: anyio-4.11.0, langsmith-0.4.43, asyncio-1.3.0, cov-7.0.0, mock-3.15.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 7 items
+
+tests\test_vector_store.py .....                                         [ 71%]
+tests\integration\test_vector_store_integration.py F                     [ 85%]
+tests\integration\test_vector_store_config_integration.py F              [100%]
+
+================================== FAILURES ===================================
+________________________ test_vector_store_end_to_end _________________________
+
+temp_vector_db = 'C:\\Users\\kingthakur\\AppData\\Local\\Temp\\tmpf1ye0i4o'
+
+    def test_vector_store_end_to_end(temp_vector_db):
+        """Test the full flow of VectorStore with a real (temporary) ChromaDB."""
+    
+        # Setup config to use temp dir
+>       config = Config()
+                 ^^^^^^^^
+
+tests\integration\test_vector_store_integration.py:19: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+shared\core_functions\config.py:105: in __init__
+    self.database_config = DatabaseConfig()
+                           ^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+__pydantic_self__ = DatabaseConfig(), _case_sensitive = None
+_nested_model_default_partial_update = None, _env_prefix = None
+_env_file = WindowsPath('.'), _env_file_encoding = None
+_env_ignore_empty = None, _env_nested_delimiter = None
+_env_nested_max_split = None, _env_parse_none_str = None
+_env_parse_enums = None, _cli_prog_name = None, _cli_parse_args = None
+_cli_settings_source = None, _cli_parse_none_str = None
+_cli_hide_none_type = None, _cli_avoid_json = None, _cli_enforce_required = None
+_cli_use_class_docs_for_groups = None, _cli_exit_on_error = None
+_cli_prefix = None, _cli_flag_prefix_char = None, _cli_implicit_flags = None
+_cli_ignore_unknown_args = None, _cli_kebab_case = None, _cli_shortcuts = None
+_secrets_dir = None, values = {}
+
+    def __init__(
+        __pydantic_self__,
+        _case_sensitive: bool | None = None,
+        _nested_model_default_partial_update: bool | None = None,
+        _env_prefix: str | None = None,
+        _env_file: DotenvType | None = ENV_FILE_SENTINEL,
+        _env_file_encoding: str | None = None,
+        _env_ignore_empty: bool | None = None,
+        _env_nested_delimiter: str | None = None,
+        _env_nested_max_split: int | None = None,
+        _env_parse_none_str: str | None = None,
+        _env_parse_enums: bool | None = None,
+        _cli_prog_name: str | None = None,
+        _cli_parse_args: bool | list[str] | tuple[str, ...] | None = None,
+        _cli_settings_source: CliSettingsSource[Any] | None = None,
+        _cli_parse_none_str: str | None = None,
+        _cli_hide_none_type: bool | None = None,
+        _cli_avoid_json: bool | None = None,
+        _cli_enforce_required: bool | None = None,
+        _cli_use_class_docs_for_groups: bool | None = None,
+        _cli_exit_on_error: bool | None = None,
+        _cli_prefix: str | None = None,
+        _cli_flag_prefix_char: str | None = None,
+        _cli_implicit_flags: bool | None = None,
+        _cli_ignore_unknown_args: bool | None = None,
+        _cli_kebab_case: bool | Literal['all', 'no_enums'] | None = None,
+        _cli_shortcuts: Mapping[str, str | list[str]] | None = None,
+        _secrets_dir: PathType | None = None,
+        **values: Any,
+    ) -> None:
+>       super().__init__(
+            **__pydantic_self__._settings_build_values(
+                values,
+                _case_sensitive=_case_sensitive,
+                _nested_model_default_partial_update=_nested_model_default_partial_update,
+                _env_prefix=_env_prefix,
+                _env_file=_env_file,
+                _env_file_encoding=_env_file_encoding,
+                _env_ignore_empty=_env_ignore_empty,
+                _env_nested_delimiter=_env_nested_delimiter,
+                _env_nested_max_split=_env_nested_max_split,
+                _env_parse_none_str=_env_parse_none_str,
+                _env_parse_enums=_env_parse_enums,
+                _cli_prog_name=_cli_prog_name,
+                _cli_parse_args=_cli_parse_args,
+                _cli_settings_source=_cli_settings_source,
+                _cli_parse_none_str=_cli_parse_none_str,
+                _cli_hide_none_type=_cli_hide_none_type,
+                _cli_avoid_json=_cli_avoid_json,
+                _cli_enforce_required=_cli_enforce_required,
+                _cli_use_class_docs_for_groups=_cli_use_class_docs_for_groups,
+                _cli_exit_on_error=_cli_exit_on_error,
+                _cli_prefix=_cli_prefix,
+                _cli_flag_prefix_char=_cli_flag_prefix_char,
+                _cli_implicit_flags=_cli_implicit_flags,
+                _cli_ignore_unknown_args=_cli_ignore_unknown_args,
+                _cli_kebab_case=_cli_kebab_case,
+                _cli_shortcuts=_cli_shortcuts,
+                _secrets_dir=_secrets_dir,
+            )
+        )
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for DatabaseConfig
+E       DATABASE_URL
+E         Field required [type=missing, input_value={}, input_type=dict]
+E           For further information visit https://errors.pydantic.dev/2.12/v/missing
+
+..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pydantic_settings\main.py:194: ValidationError
+____________________ test_vector_store_config_integration _____________________
+
+    def test_vector_store_config_integration():
+        """Test that VectorStore correctly reads from the Config object."""
+    
+>       config = Config()
+                 ^^^^^^^^
+
+tests\integration\test_vector_store_config_integration.py:8: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+shared\core_functions\config.py:105: in __init__
+    self.database_config = DatabaseConfig()
+                           ^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+__pydantic_self__ = DatabaseConfig(), _case_sensitive = None
+_nested_model_default_partial_update = None, _env_prefix = None
+_env_file = WindowsPath('.'), _env_file_encoding = None
+_env_ignore_empty = None, _env_nested_delimiter = None
+_env_nested_max_split = None, _env_parse_none_str = None
+_env_parse_enums = None, _cli_prog_name = None, _cli_parse_args = None
+_cli_settings_source = None, _cli_parse_none_str = None
+_cli_hide_none_type = None, _cli_avoid_json = None, _cli_enforce_required = None
+_cli_use_class_docs_for_groups = None, _cli_exit_on_error = None
+_cli_prefix = None, _cli_flag_prefix_char = None, _cli_implicit_flags = None
+_cli_ignore_unknown_args = None, _cli_kebab_case = None, _cli_shortcuts = None
+_secrets_dir = None, values = {}
+
+    def __init__(
+        __pydantic_self__,
+        _case_sensitive: bool | None = None,
+        _nested_model_default_partial_update: bool | None = None,
+        _env_prefix: str | None = None,
+        _env_file: DotenvType | None = ENV_FILE_SENTINEL,
+        _env_file_encoding: str | None = None,
+        _env_ignore_empty: bool | None = None,
+        _env_nested_delimiter: str | None = None,
+        _env_nested_max_split: int | None = None,
+        _env_parse_none_str: str | None = None,
+        _env_parse_enums: bool | None = None,
+        _cli_prog_name: str | None = None,
+        _cli_parse_args: bool | list[str] | tuple[str, ...] | None = None,
+        _cli_settings_source: CliSettingsSource[Any] | None = None,
+        _cli_parse_none_str: str | None = None,
+        _cli_hide_none_type: bool | None = None,
+        _cli_avoid_json: bool | None = None,
+        _cli_enforce_required: bool | None = None,
+        _cli_use_class_docs_for_groups: bool | None = None,
+        _cli_exit_on_error: bool | None = None,
+        _cli_prefix: str | None = None,
+        _cli_flag_prefix_char: str | None = None,
+        _cli_implicit_flags: bool | None = None,
+        _cli_ignore_unknown_args: bool | None = None,
+        _cli_kebab_case: bool | Literal['all', 'no_enums'] | None = None,
+        _cli_shortcuts: Mapping[str, str | list[str]] | None = None,
+        _secrets_dir: PathType | None = None,
+        **values: Any,
+    ) -> None:
+>       super().__init__(
+            **__pydantic_self__._settings_build_values(
+                values,
+                _case_sensitive=_case_sensitive,
+                _nested_model_default_partial_update=_nested_model_default_partial_update,
+                _env_prefix=_env_prefix,
+                _env_file=_env_file,
+                _env_file_encoding=_env_file_encoding,
+                _env_ignore_empty=_env_ignore_empty,
+                _env_nested_delimiter=_env_nested_delimiter,
+                _env_nested_max_split=_env_nested_max_split,
+                _env_parse_none_str=_env_parse_none_str,
+                _env_parse_enums=_env_parse_enums,
+                _cli_prog_name=_cli_prog_name,
+                _cli_parse_args=_cli_parse_args,
+                _cli_settings_source=_cli_settings_source,
+                _cli_parse_none_str=_cli_parse_none_str,
+                _cli_hide_none_type=_cli_hide_none_type,
+                _cli_avoid_json=_cli_avoid_json,
+                _cli_enforce_required=_cli_enforce_required,
+                _cli_use_class_docs_for_groups=_cli_use_class_docs_for_groups,
+                _cli_exit_on_error=_cli_exit_on_error,
+                _cli_prefix=_cli_prefix,
+                _cli_flag_prefix_char=_cli_flag_prefix_char,
+                _cli_implicit_flags=_cli_implicit_flags,
+                _cli_ignore_unknown_args=_cli_ignore_unknown_args,
+                _cli_kebab_case=_cli_kebab_case,
+                _cli_shortcuts=_cli_shortcuts,
+                _secrets_dir=_secrets_dir,
+            )
+        )
+E       pydantic_core._pydantic_core.ValidationError: 1 validation error for DatabaseConfig
+E       DATABASE_URL
+E         Field required [type=missing, input_value={}, input_type=dict]
+E           For further information visit https://errors.pydantic.dev/2.12/v/missing
+
+..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pydantic_settings\main.py:194: ValidationError
+============================== warnings summary ===============================
+..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pythonjsonlogger\jsonlogger.py:11
+  C:\Users\kingthakur\AppData\Local\Programs\Python\Python311\Lib\site-packages\pythonjsonlogger\jsonlogger.py:11: DeprecationWarning: pythonjsonlogger.jsonlogger has been moved to pythonjsonlogger.json
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/integration/test_vector_store_integration.py::test_vector_store_end_to_end
+FAILED tests/integration/test_vector_store_config_integration.py::test_vector_store_config_integration
+=================== 2 failed, 5 passed, 1 warning in 1.90s ====================
+
+STDERR:
+

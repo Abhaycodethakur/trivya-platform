@@ -79,6 +79,14 @@ class LoggingConfig(BaseSettings):
             raise ValueError(f"LOG_OUTPUT must be one of: {valid_outputs}")
         return v.lower()
 
+class VectorDBConfig(BaseSettings):
+    """Vector Database configuration schema"""
+    VECTOR_DB_TYPE: str = Field(default="chromadb")
+    VECTOR_DB_PATH: str = Field(default="./data/chroma")
+    COLLECTION_NAME: str = Field(default="trivya_kb")
+    
+    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
+
 
 class Config:
     """Main configuration class"""
@@ -98,6 +106,7 @@ class Config:
         self.api_config = APIConfig()
         self.feature_flag_config = FeatureFlagConfig()
         self.logging_config = LoggingConfig()
+        self.vector_db_config = VectorDBConfig()
 
     def load_from_env(self) -> Dict[str, Any]:
         """Load configuration from environment variables"""

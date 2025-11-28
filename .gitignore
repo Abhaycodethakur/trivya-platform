@@ -22,7 +22,7 @@ logs/
 *.log
 
 # AI/ML Models
-models/
+# models/ (Commented out to allow backend/app/models)
 data/
 
 # Frontend / Node.js

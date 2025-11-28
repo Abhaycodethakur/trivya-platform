@@ -1,0 +1,122 @@
+/* ActivityFeed Component Styles - Luxury Theme */
+
+.activityFeed {
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8) 0%, rgba(45, 45, 45, 0.8) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 15px;
+    padding: 1.5rem;
+    height: 100%;
+    backdrop-filter: blur(10px);
+}
+
+.title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 1.5rem 0;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.feedList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.activityItem {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.activityItem:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateX(5px);
+}
+
+.activityItem.success {
+    border-left: 3px solid #00ff00;
+}
+
+.activityItem.info {
+    border-left: 3px solid #00ffff;
+}
+
+.activityItem.warning {
+    border-left: 3px solid #ffa500;
+}
+
+.iconContainer {
+    min-width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 50%;
+}
+
+.icon {
+    font-size: 1.25rem;
+}
+
+.content {
+    flex: 1;
+}
+
+.activityTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 0.25rem 0;
+}
+
+.description {
+    font-size: 0.875rem;
+    color: #b0b0b0;
+    margin: 0 0 0.5rem 0;
+    line-height: 1.4;
+}
+
+.time {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+/* Scrollbar Styling */
+.feedList::-webkit-scrollbar {
+    width: 6px;
+}
+
+.feedList::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.feedList::-webkit-scrollbar-thumb {
+    background: rgba(212, 175, 55, 0.3);
+    border-radius: 3px;
+}
+
+.feedList::-webkit-scrollbar-thumb:hover {
+    background: rgba(212, 175, 55, 0.5);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .activityFeed {
+        padding: 1rem;
+    }
+
+    .feedList {
+        max-height: 400px;
+    }
+}

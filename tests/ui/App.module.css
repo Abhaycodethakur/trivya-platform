@@ -1,0 +1,66 @@
+/* App.module.css */
+
+/* Design System Colors */
+:root {
+    --color-charcoal: #0A0A0B;
+    --color-gold: #D4AF37;
+    --color-cyan: #00D4FF;
+    --color-ivory: #F5F5F0;
+}
+
+.app {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0A0A0B 0%, #1a1a1c 100%);
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.authContainer {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.toggleLink {
+    text-align: center;
+    color: var(--color-cyan, #00D4FF);
+    cursor: pointer;
+    font-size: 0.9rem;
+    text-decoration: underline;
+    transition: opacity 0.2s ease;
+}
+
+.toggleLink:hover {
+    opacity: 0.8;
+}
+
+.dashboard {
+    width: 100%;
+    max-width: 1200px;
+    padding: 2rem;
+    color: var(--color-ivory, #F5F5F0);
+}
+
+.dashboardTitle {
+    font-size: 2rem;
+    color: var(--color-gold, #D4AF37);
+    margin-bottom: 1rem;
+}
+
+.dashboardContent {
+    background-color: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 8px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}

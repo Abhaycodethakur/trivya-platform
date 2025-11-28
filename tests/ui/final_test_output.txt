@@ -1,0 +1,234 @@
+﻿
+> trivya-ui-tests@1.0.0 test
+> jest --watchAll=false --no-coverage
+
+jest-haste-map: duplicate manual mock found: licenseService
+  The following files share their name; please delete one of them:
+    * <rootDir>\..\..\frontend\src\services\__mocks__\licenseService.js
+    * <rootDir>\services\__mocks__\licenseService.js
+
+jest-haste-map: duplicate manual mock found: authService
+  The following files share their name; please delete one of them:
+    * <rootDir>\..\..\frontend\src\services\__mocks__\authService.js
+    * <rootDir>\services\__mocks__\authService.js
+
+node.exe : PASS components/c
+ommon/Loading.test.jsx
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
+    + CategoryInfo          
+    : NotSpe    cified: 
+(PASS co    
+mponents/common/    
+Loading.test.jsx    
+:String) [], Rem    
+oteException
+    + FullyQualified    
+ErrorId : Native    
+CommandError
+ 
+  ● Console
+
+    console.error
+      Warning: Failed prop 
+type: Invalid prop `size` 
+of value `extra-large` 
+supplied to `Loading`, 
+expected one of 
+["small","medium","large"].
+          at size (C:\Users\
+kingthakur\Desktop\trivya\te
+sts\ui\components\common\Loa
+ding.jsx:11:20)
+
+    [0m [90m 48 |[39m    
+ test([32m'renders 
+gracefully with unexpected 
+props'[39m[33m,[39m () 
+[33m=>[39m {
+     [90m 49 |[39m        
+ [90m// @ts-ignore[39m
+    
+[31m[1m>[22m[39m[90m 
+50 |[39m         render([3
+3m<[39m[33mLoading[39m si
+ze[33m=[39m[32m"extra-lar
+ge"[39m type[33m=[39m[32
+m"unknown"[39m [33m/[39m
+[33m>[39m)[33m;[39m
+     [90m    |[39m        
+        [31m[1m^[22m[39m
+     [90m 51 |[39m        
+ [90m// Should still 
+render the container and 
+potentially base classes 
+without crashing[39m
+     [90m 52 |[39m        
+ [36mconst[39m container 
+[33m=[39m screen[33m.[39
+mgetByRole([32m'status'[39
+m)[33m;[39m
+     [90m 53 |[39m        
+ expect(container)[33m.[39
+mtoBeInTheDocument()[33m;[
+39m[0m
+
+      at printWarning (node_
+modules/react/cjs/react.deve
+lopment.js:209:30)
+      at error (node_modules
+/react/cjs/react.development
+.js:183:7)
+      at checkPropTypes (nod
+e_modules/react/cjs/react.de
+velopment.js:2074:11)
+      at validatePropTypes (
+node_modules/react/cjs/react
+.development.js:2275:7)
+      at 
+createElementWithValidation 
+(node_modules/react/cjs/reac
+t.development.js:2379:5)
+      at Object.__jsx (compo
+nents/common/Loading.test.js
+x:50:16)
+
+    console.error
+      Warning: Failed prop 
+type: Invalid prop `type` 
+of value `unknown` supplied 
+to `Loading`, expected one 
+of ["spinner","skeleton"].
+          at size (C:\Users\
+kingthakur\Desktop\trivya\te
+sts\ui\components\common\Loa
+ding.jsx:11:20)
+
+    [0m [90m 48 |[39m    
+ test([32m'renders 
+gracefully with unexpected 
+props'[39m[33m,[39m () 
+[33m=>[39m {
+     [90m 49 |[39m        
+ [90m// @ts-ignore[39m
+    
+[31m[1m>[22m[39m[90m 
+50 |[39m         render([3
+3m<[39m[33mLoading[39m si
+ze[33m=[39m[32m"extra-lar
+ge"[39m type[33m=[39m[32
+m"unknown"[39m [33m/[39m
+[33m>[39m)[33m;[39m
+     [90m    |[39m        
+        [31m[1m^[22m[39m
+     [90m 51 |[39m        
+ [90m// Should still 
+render the container and 
+potentially base classes 
+without crashing[39m
+     [90m 52 |[39m        
+ [36mconst[39m container 
+[33m=[39m screen[33m.[39
+mgetByRole([32m'status'[39
+m)[33m;[39m
+     [90m 53 |[39m        
+ expect(container)[33m.[39
+mtoBeInTheDocument()[33m;[
+39m[0m
+
+      at printWarning (node_
+modules/react/cjs/react.deve
+lopment.js:209:30)
+      at error (node_modules
+/react/cjs/react.development
+.js:183:7)
+      at checkPropTypes (nod
+e_modules/react/cjs/react.de
+velopment.js:2074:11)
+      at validatePropTypes (
+node_modules/react/cjs/react
+.development.js:2275:7)
+      at 
+createElementWithValidation 
+(node_modules/react/cjs/reac
+t.development.js:2379:5)
+      at Object.__jsx (compo
+nents/common/Loading.test.js
+x:50:16)
+
+PASS components/common/Error
+Boundary.test.jsx (5.084 s)
+PASS ./test_header.test.jsx 
+(5.126 s)
+PASS ./test_footer.test.jsx 
+(5.332 s)
+FAIL ./App.test.jsx
+  ● Test suite failed to run
+
+    Cannot find module 
+'../App' from 'App.test.jsx'
+
+    [0m [90m 2 |[39m 
+[36mimport[39m { 
+render[33m,[39m 
+screen[33m,[39m 
+fireEvent[33m,[39m 
+waitFor } [36mfrom[39m [3
+2m'@testing-library/react'[
+39m[33m;[39m
+     [90m 3 |[39m 
+[36mimport[39m [32m'@test
+ing-library/jest-dom'[39m[
+33m;[39m
+    
+[31m[1m>[22m[39m[90m 4 
+|[39m [36mimport[39m 
+[33mApp[39m 
+[36mfrom[39m [32m'../App'
+[39m[33m;[39m
+     [90m   |[39m 
+[31m[1m^[22m[39m
+     [90m 5 |[39m
+     [90m 6 |[39m [90m// 
+Mock all child 
+components[39m
+     [90m 7 |[39m jest[33
+m.[39mmock([32m'./componen
+ts/common/ErrorBoundary'[39
+m[33m,[39m () 
+[33m=>[39m ({ children }) 
+[33m=>[39m [33m<[39m[33
+mdiv[39m[33m>[39m{childre
+n}[33m<[39m[33m/[39m[33
+mdiv[39m[33m>[39m)[33m;
+[39m[0m
+
+      at Resolver._throwModN
+otFoundError (node_modules/j
+est-resolve/build/resolver.j
+s:427:11)
+      at Object.require 
+(App.test.jsx:4:1)
+
+PASS components/auth/SignupF
+orm.test.jsx (8.144 s)
+PASS components/auth/LoginFo
+rm.test.jsx (8.163 s)
+PASS components/license/Lice
+nseKeyForm.test.jsx (8.987 
+s)
+
+Test Suites: 1 failed, 7 
+passed, 8 total
+Tests:       53 passed, 53 
+total
+Snapshots:   2 passed, 2 
+total
+Time:        12.601 s
+Ran all test suites.

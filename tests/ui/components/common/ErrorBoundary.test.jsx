@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import ErrorBoundary from '../../../../../frontend/src/components/common/ErrorBoundary';
+import ErrorBoundary from '../../components/common/ErrorBoundary';
 
 // Helper component that throws an error
 const Bomb = ({ shouldThrow }) => {

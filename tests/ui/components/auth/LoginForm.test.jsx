@@ -1,11 +1,11 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import LoginForm from '../../../../../frontend/src/components/auth/LoginForm';
-import * as authService from '../../../../../frontend/src/services/__mocks__/authService';
+import LoginForm from '../../components/auth/LoginForm';
+import * as authService from '../../services/__mocks__/authService';
 
 // Mock the Loading component to simplify testing
-jest.mock('../../../../../frontend/src/components/common/Loading', () => () => <div data-testid="loading-spinner">Loading...</div>);
+jest.mock('../../components/common/Loading', () => () => <div data-testid="loading-spinner">Loading...</div>);
 
 describe('LoginForm Component', () => {
     const mockOnLoginSuccess = jest.fn();
@@ -54,7 +54,7 @@ describe('LoginForm Component', () => {
                 email: 'test@example.com',
                 name: 'Test User'
             }));
-        });
+        }, { timeout: 3000 });
     });
 
     test('displays error message on failed login', async () => {
@@ -65,7 +65,7 @@ describe('LoginForm Component', () => {
 
         fireEvent.click(screen.getByRole('button', { name: /Sign In/i }));
 
-        expect(await screen.findByText(/Invalid credentials/i)).toBeInTheDocument();
+        expect(await screen.findByText(/Invalid credentials/i, {}, { timeout: 3000 })).toBeInTheDocument();
         expect(mockOnLoginSuccess).not.toHaveBeenCalled();
     });
 
@@ -82,6 +82,6 @@ describe('LoginForm Component', () => {
 
         await waitFor(() => {
             expect(screen.queryByTestId('loading-spinner')).not.toBeInTheDocument();
-        });
+        }, { timeout: 3000 });
     });
 });

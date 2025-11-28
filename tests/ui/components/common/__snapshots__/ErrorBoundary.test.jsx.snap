@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorBoundary Component matches snapshot of fallback UI 1`] = `
+<DocumentFragment>
+  <div
+    class="container"
+    role="alert"
+  >
+    <h1
+      class="heading"
+    >
+      Something went wrong.
+    </h1>
+    <p
+      class="message"
+    >
+      We apologize for the inconvenience. Our team has been notified of this issue. Please try reloading the page.
+    </p>
+    <button
+      class="button"
+    >
+      Reload Page
+    </button>
+  </div>
+</DocumentFragment>
+`;

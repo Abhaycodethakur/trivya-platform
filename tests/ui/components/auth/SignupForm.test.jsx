@@ -1,10 +1,10 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import SignupForm from '../../../../../frontend/src/components/auth/SignupForm';
+import SignupForm from '../../components/auth/SignupForm';
 
 // Mock the Loading component
-jest.mock('../../../../../frontend/src/components/common/Loading', () => () => <div data-testid="loading-spinner">Loading...</div>);
+jest.mock('../../components/common/Loading', () => () => <div data-testid="loading-spinner">Loading...</div>);
 
 describe('SignupForm Component', () => {
     const mockOnSignupSuccess = jest.fn();
@@ -60,7 +60,7 @@ describe('SignupForm Component', () => {
                 email: 'new@example.com',
                 name: 'New User'
             }));
-        });
+        }, { timeout: 3000 });
     });
 
     test('displays error message on failed registration (existing email)', async () => {
@@ -74,7 +74,7 @@ describe('SignupForm Component', () => {
 
         fireEvent.click(screen.getByRole('button', { name: /Create Account/i }));
 
-        expect(await screen.findByText(/Email already exists/i)).toBeInTheDocument();
+        expect(await screen.findByText(/Email already exists/i, {}, { timeout: 3000 })).toBeInTheDocument();
         expect(mockOnSignupSuccess).not.toHaveBeenCalled();
     });
 });

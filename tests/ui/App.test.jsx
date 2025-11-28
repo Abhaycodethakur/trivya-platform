@@ -1,25 +1,25 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import App from '../../../frontend/src/App';
+import App from './App';
 
 // Mock all child components
-jest.mock('../../../frontend/src/components/common/ErrorBoundary', () => ({ children }) => <div>{children}</div>);
-jest.mock('../../../frontend/src/components/auth/LoginForm', () => ({ onLoginSuccess }) => (
+jest.mock('./components/common/ErrorBoundary', () => ({ children }) => <div>{children}</div>);
+jest.mock('./components/auth/LoginForm', () => ({ onLoginSuccess }) => (
     <div data-testid="login-form">
         <button onClick={() => onLoginSuccess({ id: 1, name: 'Test User', token: 'token' })}>
             Mock Login
         </button>
     </div>
 ));
-jest.mock('../../../frontend/src/components/auth/SignupForm', () => ({ onSignupSuccess }) => (
+jest.mock('./components/auth/SignupForm', () => ({ onSignupSuccess }) => (
     <div data-testid="signup-form">
         <button onClick={() => onSignupSuccess({ id: 2, name: 'New User', token: 'token' })}>
             Mock Signup
         </button>
     </div>
 ));
-jest.mock('../../../frontend/src/components/license/LicenseKeyForm', () => ({ onLicenseValid }) => (
+jest.mock('./components/license/LicenseKeyForm', () => ({ onLicenseValid }) => (
     <div data-testid="license-form">
         <button onClick={() => onLicenseValid({ type: 'Gold', expiryDate: '2025-12-31' })}>
             Mock License

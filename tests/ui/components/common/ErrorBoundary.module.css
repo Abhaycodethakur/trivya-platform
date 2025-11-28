@@ -1,0 +1,65 @@
+/* ErrorBoundary.module.css */
+
+/* Design System Colors */
+:root {
+    --color-charcoal: #0A0A0B;
+    --color-gold: #D4AF37;
+    --color-cyan: #00D4FF;
+    --color-ivory: #F5F5F0;
+    --color-error-bg: rgba(255, 82, 82, 0.1);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    padding: 2rem;
+    background-color: var(--color-charcoal, #0A0A0B);
+    color: var(--color-ivory, #F5F5F0);
+    text-align: center;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    border-radius: 8px;
+    font-family: 'Inter', sans-serif;
+}
+
+.heading {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-gold, #D4AF37);
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.message {
+    font-size: 1rem;
+    color: rgba(245, 245, 240, 0.8);
+    margin-bottom: 2rem;
+    max-width: 500px;
+    line-height: 1.6;
+}
+
+.button {
+    background: transparent;
+    border: 1px solid var(--color-cyan, #00D4FF);
+    color: var(--color-cyan, #00D4FF);
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.button:hover {
+    background: rgba(0, 212, 255, 0.1);
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+    transform: translateY(-1px);
+}
+
+.button:active {
+    transform: translateY(0);
+}

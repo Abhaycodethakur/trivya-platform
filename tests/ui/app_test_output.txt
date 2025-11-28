@@ -1,0 +1,114 @@
+﻿
+> trivya-ui-tests@1.0.0 test
+> jest --watchAll=false App.test.jsx
+
+jest-haste-map: duplicate manual mock found: authService
+  The following files share their name; please delete one of them:
+    * <rootDir>\services\__mocks__\authService.js
+    * <rootDir>\..\..\frontend\src\services\__mocks__\authService.js
+
+jest-haste-map: duplicate manual mock found: licenseService
+  The following files share their name; please delete one of them:
+    * <rootDir>\services\__mocks__\licenseService.js
+    * <rootDir>\..\..\frontend\src\services\__mocks__\licenseService.js
+
+node.exe : FAIL 
+./App.test.jsx
+At line:1 char:1
++ & "C:\Program Files
+\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (FAIL ./   
+ App.test.jsx:Str    
+ing) [], RemoteE    
+xception
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+  ● Test suite 
+failed to run
+
+    Cannot find 
+module '../components
+/auth/LoginForm' 
+from 'App.test.jsx'
+
+    [0m [90m  6 
+|[39m [90m// Mock 
+all child 
+components[39m
+     [90m  7 |[39m 
+jest[33m.[39mmock(
+[32m'./components/com
+mon/ErrorBoundary'[3
+9m[33m,[39m () 
+[33m=>[39m ({ 
+children }) 
+[33m=>[39m [33m<[
+39m[33mdiv[39m[33m
+>[39m{children}[33m
+<[39m[33m/[39m[33
+mdiv[39m[33m>[39m)
+[33m;[39m
+    [31m[1m>[22m[
+39m[90m  8 |[39m je
+st[33m.[39mmock([3
+2m'../components/auth
+/LoginForm'[39m[33m
+,[39m () 
+[33m=>[39m ({ 
+onLoginSuccess }) 
+[33m=>[39m (
+     [90m    |[39m 
+     
+[31m[1m^[22m[39m
+     [90m  9 |[39m 
+    [33m<[39m[33md
+iv[39m data[33m-[3
+9mtestid[33m=[39m[
+32m"login-form"[39m
+[33m>[39m
+     [90m 10 |[39m 
+        [33m<[39m[
+33mbutton[39m onClic
+k[33m=[39m{() 
+[33m=>[39m 
+onLoginSuccess({ 
+id[33m:[39m [35m1
+[39m[33m,[39m 
+name[33m:[39m 
+[32m'Test User'[39m
+[33m,[39m 
+token[33m:[39m 
+[32m'token'[39m 
+})}[33m>[39m
+     [90m 11 |[39m 
+            
+[33mMock[39m 
+[33mLogin[39m[0m
+
+      at Resolver._th
+rowModNotFoundError (
+node_modules/jest-res
+olve/build/resolver.j
+s:427:11)
+      at Object.mock 
+(App.test.jsx:8:6)
+
+Test Suites: 1 
+failed, 1 total
+Tests:       0 total
+Snapshots:   0 total
+Time:        3.089 s
+Ran all test suites 
+matching 
+/App.test.jsx/i.

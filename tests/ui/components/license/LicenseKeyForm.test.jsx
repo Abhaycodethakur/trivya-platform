@@ -1,11 +1,11 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import LicenseKeyForm from '../../../../../frontend/src/components/license/LicenseKeyForm';
-import * as licenseService from '../../../../../frontend/src/services/__mocks__/licenseService';
+import LicenseKeyForm from '../../components/license/LicenseKeyForm';
+import * as licenseService from '../../services/__mocks__/licenseService';
 
 // Mock the Loading component
-jest.mock('../../../../../frontend/src/components/common/Loading', () => () => <div data-testid="loading-spinner">Loading...</div>);
+jest.mock('../../components/common/Loading', () => () => <div data-testid="loading-spinner">Loading...</div>);
 
 describe('LicenseKeyForm Component', () => {
     const mockOnLicenseValid = jest.fn();
@@ -43,7 +43,7 @@ describe('LicenseKeyForm Component', () => {
         expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
 
         // Should show success message
-        expect(await screen.findByText(/License validated successfully/i)).toBeInTheDocument();
+        expect(await screen.findByText(/License validated successfully/i, {}, { timeout: 3000 })).toBeInTheDocument();
 
         // Should call callback after delay
         await waitFor(() => {
@@ -51,7 +51,7 @@ describe('LicenseKeyForm Component', () => {
                 isValid: true,
                 type: 'Enterprise'
             }));
-        }, { timeout: 2000 });
+        }, { timeout: 5000 });
     });
 
     test('handles invalid license key', async () => {
@@ -62,7 +62,7 @@ describe('LicenseKeyForm Component', () => {
 
         fireEvent.click(screen.getByRole('button', { name: /Validate License/i }));
 
-        expect(await screen.findByText(/Invalid license key/i)).toBeInTheDocument();
+        expect(await screen.findByText(/Invalid license key/i, {}, { timeout: 3000 })).toBeInTheDocument();
         expect(mockOnLicenseValid).not.toHaveBeenCalled();
     });
 

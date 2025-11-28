@@ -1,0 +1,1698 @@
+﻿
+> trivya-ui-tests@1.0.0 test
+> jest --watchAll=false --verbose
+
+jest-haste-map: duplicate manual mock found: authService
+  The following files share their name; please delete one of them:
+    * <rootDir>\services\__mocks__\authService.js
+    * <rootDir>\..\..\frontend\src\services\__mocks__\authService.js
+
+jest-haste-map: duplicate manual mock found: licenseService
+  The following files share their name; please delete one of them:
+    * <rootDir>\services\__mocks__\licenseService.js
+    * <rootDir>\..\..\frontend\src\services\__mocks__\licenseService.js
+
+  console.error
+    Warning: Failed prop type: Invalid prop `size` of value `extra-large` supplied to `Loading`, expected one of ["small","medium","large"].
+        at size (C:\Users\kingthakur\Desktop\trivya\tests\ui\components\common\Loading.jsx:11:20)
+
+    [0m [90m 48 |[39m     test([32m'renders gracefully with unexpected props'[39m[33m,[39m () [33m=>[39m {
+     [90m 49 |[39m         [90m// @ts-ignore[39m
+    [31m[1m>[22m[39m[90m 50 |[39m         render([33m<[39m[33mLoading[39m size[33m=[39m[32m"extra-large"[39m type[33m=[39m[32m"unknown"[39m [33m/[39m[33m>[39m)[33m;[39m
+     [90m    |[39m                [31m[1m^[22m[39m
+     [90m 51 |[39m         [90m// Should still render the container and potentially base classes without crashing[39m
+     [90m 52 |[39m         [36mconst[39m container [33m=[39m screen[33m.[39mgetByRole([32m'status'[39m)[33m;[39m
+     [90m 53 |[39m         expect(container)[33m.[39mtoBeInTheDocument()[33m;[39m[0m
+
+      at printWarning (node_modules/react/cjs/react.development.js:209:30)
+      at error (node_modules/react/cjs/react.development.js:183:7)
+      at checkPropTypes (node_modules/react/cjs/react.development.js:2074:11)
+      at validatePropTypes (node_modules/react/cjs/react.development.js:2275:7)
+      at createElementWithValidation (node_modules/react/cjs/react.development.js:2379:5)
+      at Object.__jsx (components/common/Loading.test.jsx:50:16)
+
+  console.error
+    Warning: Failed prop type: Invalid prop `type` of value `unknown` supplied to `Loading`, expected one of ["spinner","skeleton"].
+        at size (C:\Users\kingthakur\Desktop\trivya\tests\ui\components\common\Loading.jsx:11:20)
+
+    [0m [90m 48 |[39m     test([32m'renders gracefully with unexpected props'[39m[33m,[39m () [33m=>[39m {
+     [90m 49 |[39m         [90m// @ts-ignore[39m
+    [31m[1m>[22m[39m[90m 50 |[39m         render([33m<[39m[33mLoading[39m size[33m=[39m[32m"extra-large"[39m type[33m=[39m[32m"unknown"[39m [33m/[39m[33m>[39m)[33m;[39m
+     [90m    |[39m                [31m[1m^[22m[39m
+     [90m 51 |[39m         [90m// Should still render the container and potentially base classes without crashing[39m
+     [90m 52 |[39m         [36mconst[39m container [33m=[39m screen[33m.[39mgetByRole([32m'status'[39m)[33m;[39m
+     [90m 53 |[39m         expect(container)[33m.[39mtoBeInTheDocument()[33m;[39m[0m
+
+      at printWarning (node_modules/react/cjs/react.development.js:209:30)
+      at error (node_modules/react/cjs/react.development.js:183:7)
+      at checkPropTypes (node_modules/react/cjs/react.development.js:2074:11)
+      at validatePropTypes (node_modules/react/cjs/react.development.js:2275:7)
+      at createElementWithValidation (node_modules/react/cjs/react.development.js:2379:5)
+      at Object.__jsx (components/common/Loading.test.jsx:50:16)
+
+node.exe : PASS compo
+nents/common/Loading.
+test.jsx (6.11 s)
+At line:1 char:1
++ & "C:\Program Files
+\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo 
+...
++ ~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: (PASS co   
+ mponents...st.js    
+x (6.11 s):Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+  Loading Component
+    √ renders 
+default spinner 
+correctly (154 ms)
+    √ renders with 
+message (16 ms)
+    √ renders 
+skeleton variant (6 
+ms)
+    √ has correct 
+accessibility 
+attributes (218 ms)
+    √ applies size 
+classes correctly 
+(72 ms)
+    √ matches 
+snapshot (44 ms)
+    √ renders 
+gracefully with 
+unexpected props 
+(284 ms)
+
+PASS components/commo
+n/ErrorBoundary.test.
+jsx (6.172 s)
+  ErrorBoundary 
+Component
+    √ renders 
+children without 
+error (196 ms)
+    √ catches error 
+and renders fallback 
+UI (430 ms)
+    √ calls onError 
+prop when error is 
+caught (34 ms)
+    √ matches 
+snapshot of fallback 
+UI (152 ms)
+
+PASS ./test_header.te
+st.jsx (6.488 s)
+  Header Component
+    Unauthenticated 
+State
+      √ renders logo 
+and navigation links 
+(456 ms)
+      √ mobile menu 
+is closed by default 
+(70 ms)
+      √ opens mobile 
+menu when button is 
+clicked (391 ms)
+    Authenticated 
+State
+      √ displays 
+user information 
+when authenticated 
+(46 ms)
+      √ calls logout 
+function when logout 
+button is clicked 
+(35 ms)
+    Active Route 
+Highlighting
+      √ highlights 
+active route 
+correctly (14 ms)
+    Scroll Effect
+      √ applies 
+scroll effect when 
+page is scrolled (14 
+ms)
+    Mobile Menu 
+Toggle
+      √ closes 
+mobile menu when 
+navigation link is 
+clicked (75 ms)
+
+PASS ./test_footer.te
+st.jsx (6.594 s)
+  Footer Component
+    Basic Rendering
+      √ renders 
+footer with correct 
+CSS classes (581 ms)
+      √ renders 
+Trivya logo and 
+company name (70 ms)
+      √ displays 
+company description 
+(76 ms)
+    Navigation Links
+      √ renders all 
+footer link sections 
+(95 ms)
+      √ renders 
+Product section 
+links with correct 
+href (149 ms)
+      √ renders 
+Company section 
+links with correct 
+href (51 ms)
+      √ renders 
+Support section 
+links with correct 
+href (86 ms)
+      √ renders 
+Legal section links 
+with correct href 
+(30 ms)
+    Social Media 
+Links
+      √ renders all 
+social media icons 
+(20 ms)
+      √ social media 
+links have correct 
+href attributes (19 
+ms)
+      √ social media 
+links open in new 
+tab (10 ms)
+    Copyright Year
+      √ displays 
+current year in 
+copyright (10 ms)
+    Active Route 
+Highlighting
+      √ highlights 
+active route with 
+gold color (12 ms)
+      √ non-active 
+routes have default 
+color (11 ms)
+    Responsive Design
+      √ footer has 
+responsive grid 
+classes (15 ms)
+      √ bottom 
+section has 
+responsive flex 
+classes (11 ms)
+    Accessibility
+      √ footer has 
+correct role 
+attribute (17 ms)
+      √ social media 
+links have 
+aria-labels (7 ms)
+
+FAIL ./App.test.jsx
+  ● Test suite 
+failed to run
+
+    Cannot find 
+module '../components
+/common/ErrorBoundary
+' from 'App.test.jsx'
+
+    [0m [90m  5 
+|[39m
+     [90m  6 |[39m 
+[90m// Mock all 
+child components[39m
+    [31m[1m>[22m[
+39m[90m  7 |[39m je
+st[33m.[39mmock([3
+2m'../components/comm
+on/ErrorBoundary'[39
+m[33m,[39m () 
+[33m=>[39m ({ 
+children }) 
+[33m=>[39m [33m<[
+39m[33mdiv[39m[33m
+>[39m{children}[33m
+<[39m[33m/[39m[33
+mdiv[39m[33m>[39m)
+[33m;[39m
+     [90m    |[39m 
+     
+[31m[1m^[22m[39m
+     [90m  8 |[39m 
+jest[33m.[39mmock(
+[32m'../components/au
+th/LoginForm'[39m[3
+3m,[39m () 
+[33m=>[39m ({ 
+onLoginSuccess }) 
+[33m=>[39m (
+     [90m  9 |[39m 
+    [33m<[39m[33md
+iv[39m data[33m-[3
+9mtestid[33m=[39m[
+32m"login-form"[39m
+[33m>[39m
+     [90m 10 |[39m 
+        [33m<[39m[
+33mbutton[39m onClic
+k[33m=[39m{() 
+[33m=>[39m 
+onLoginSuccess({ 
+id[33m:[39m [35m1
+[39m[33m,[39m 
+name[33m:[39m 
+[32m'Test User'[39m
+[33m,[39m 
+token[33m:[39m 
+[32m'token'[39m 
+})}[33m>[39m[0m
+
+      at Resolver._th
+rowModNotFoundError (
+node_modules/jest-res
+olve/build/resolver.j
+s:427:11)
+      at Object.mock 
+(App.test.jsx:7:6)
+
+FAIL components/licen
+se/LicenseKeyForm.tes
+t.jsx (8.292 s)
+  LicenseKeyForm 
+Component
+    √ renders form 
+elements correctly 
+(597 ms)
+    √ displays error 
+for empty submission 
+(123 ms)
+    × handles 
+successful 
+validation (1102 ms)
+    × handles 
+invalid license key 
+(1025 ms)
+    √ 
+auto-capitalizes 
+input (7 ms)
+
+  ● LicenseKeyForm 
+Component › handles 
+successful validation
+
+    Unable to find 
+an element with the 
+text: /License 
+validated 
+successfully/i. This 
+could be because the 
+text is broken up by 
+multiple elements. 
+In this case, you 
+can provide a 
+function for your 
+text matcher to make 
+your matcher more 
+flexible.
+
+    Ignored nodes: 
+comments, script, 
+style
+    [36m<body>[39m
+      [36m<div>[39m
+        
+[36m<div[39m
+          [33mclass
+[39m=[32m"container"
+[39m
+        [36m>[39m
+          
+[36m<h2[39m
+            [33mclas
+s[39m=[32m"title"[
+39m
+          [36m>[39m
+            
+[0mActivate 
+Trivya[0m
+          
+[36m</h2>[39m
+          
+[36m<p[39m
+            [33mclas
+s[39m=[32m"subtitle
+"[39m
+          [36m>[39m
+            
+[0mEnter your 
+product license key 
+to unlock the full 
+potential of the 
+Trivya Platform.[0m
+          
+[36m</p>[39m
+          
+[36m<form[39m
+            [33maria
+-busy[39m=[32m"true
+"[39m
+            [33mnova
+lidate[39m=[32m""[
+39m
+          [36m>[39m
+            
+[36m<div[39m
+              [33mcl
+ass[39m=[32m"formGr
+oup"[39m
+            
+[36m>[39m
+              
+[36m<label[39m
+                [33m
+class[39m=[32m"labe
+l"[39m
+                [33m
+for[39m=[32m"licens
+eKey"[39m
+              
+[36m>[39m
+                
+[0mLicense Key[0m
+              
+[36m</label>[39m
+              
+[36m<input[39m
+                [33m
+aria-invalid[39m=[3
+2m"false"[39m
+                [33m
+autocomplete[39m=[3
+2m"off"[39m
+                [33m
+class[39m=[32m"inpu
+t "[39m
+                [33m
+disabled[39m=[32m""
+[39m
+                [33m
+id[39m=[32m"license
+Key"[39m
+                [33m
+placeholder[39m=[32
+m"TRIVYA-XXXX-XXXX-XX
+XX"[39m
+                [33m
+type[39m=[32m"text"
+[39m
+                [33m
+value[39m=[32m"TRIV
+YA-TEST-1234-5678"[3
+9m
+              
+[36m/>[39m
+            
+[36m</div>[39m
+            
+[36m<button[39m
+              [33mcl
+ass[39m=[32m"submit
+Button"[39m
+              [33mdi
+sabled[39m=[32m""[
+39m
+              [33mty
+pe[39m=[32m"submit"
+[39m
+            
+[36m>[39m
+              
+[36m<div[39m
+                [33m
+data-testid[39m=[32
+m"loading-spinner"[3
+9m
+              
+[36m>[39m
+                
+[0mLoading...[0m
+              
+[36m</div>[39m
+            
+[36m</button>[39m
+          
+[36m</form>[39m
+        
+[36m</div>[39m
+      
+[36m</div>[39m
+    [36m</body>[39m
+
+    [0m [90m 44 
+|[39m
+     [90m 45 |[39m 
+        [90m// 
+Should show success 
+message[39m
+    [31m[1m>[22m[
+39m[90m 46 |[39m   
+      expect([36mawa
+it[39m screen[33m.
+[39mfindByText([35m/
+License validated suc
+cessfully/i[39m))[3
+3m.[39mtoBeInTheDocu
+ment()[33m;[39m
+     [90m    |[39m 
+                     
+       
+[31m[1m^[22m[39m
+     [90m 47 |[39m
+     [90m 48 |[39m 
+        [90m// 
+Should call callback 
+after delay[39m
+     [90m 49 |[39m 
+        
+[36mawait[39m 
+waitFor(() 
+[33m=>[39m {[0m
+
+      at 
+waitForWrapper (node_
+modules/@testing-libr
+ary/react/node_module
+s/@testing-library/do
+m/dist/wait-for.js:16
+3:27)
+      at node_modules
+/@testing-library/rea
+ct/node_modules/@test
+ing-library/dom/dist/
+query-helpers.js:86:3
+3
+      at 
+Object.findByText (co
+mponents/license/Lice
+nseKeyForm.test.jsx:4
+6:29)
+
+  ● LicenseKeyForm 
+Component › handles 
+invalid license key
+
+    Unable to find 
+an element with the 
+text: /Invalid 
+license key/i. This 
+could be because the 
+text is broken up by 
+multiple elements. 
+In this case, you 
+can provide a 
+function for your 
+text matcher to make 
+your matcher more 
+flexible.
+
+    Ignored nodes: 
+comments, script, 
+style
+    [36m<body>[39m
+      [36m<div>[39m
+        
+[36m<div[39m
+          [33mclass
+[39m=[32m"container"
+[39m
+        [36m>[39m
+          
+[36m<h2[39m
+            [33mclas
+s[39m=[32m"title"[
+39m
+          [36m>[39m
+            
+[0mActivate 
+Trivya[0m
+          
+[36m</h2>[39m
+          
+[36m<p[39m
+            [33mclas
+s[39m=[32m"subtitle
+"[39m
+          [36m>[39m
+            
+[0mEnter your 
+product license key 
+to unlock the full 
+potential of the 
+Trivya Platform.[0m
+          
+[36m</p>[39m
+          
+[36m<form[39m
+            [33maria
+-busy[39m=[32m"true
+"[39m
+            [33mnova
+lidate[39m=[32m""[
+39m
+          [36m>[39m
+            
+[36m<div[39m
+              [33mcl
+ass[39m=[32m"formGr
+oup"[39m
+            
+[36m>[39m
+              
+[36m<label[39m
+                [33m
+class[39m=[32m"labe
+l"[39m
+                [33m
+for[39m=[32m"licens
+eKey"[39m
+              
+[36m>[39m
+                
+[0mLicense Key[0m
+              
+[36m</label>[39m
+              
+[36m<input[39m
+                [33m
+aria-invalid[39m=[3
+2m"false"[39m
+                [33m
+autocomplete[39m=[3
+2m"off"[39m
+                [33m
+class[39m=[32m"inpu
+t "[39m
+                [33m
+disabled[39m=[32m""
+[39m
+                [33m
+id[39m=[32m"license
+Key"[39m
+                [33m
+placeholder[39m=[32
+m"TRIVYA-XXXX-XXXX-XX
+XX"[39m
+                [33m
+type[39m=[32m"text"
+[39m
+                [33m
+value[39m=[32m"INVA
+LID-KEY"[39m
+              
+[36m/>[39m
+            
+[36m</div>[39m
+            
+[36m<button[39m
+              [33mcl
+ass[39m=[32m"submit
+Button"[39m
+              [33mdi
+sabled[39m=[32m""[
+39m
+              [33mty
+pe[39m=[32m"submit"
+[39m
+            
+[36m>[39m
+              
+[36m<div[39m
+                [33m
+data-testid[39m=[32
+m"loading-spinner"[3
+9m
+              
+[36m>[39m
+                
+[0mLoading...[0m
+              
+[36m</div>[39m
+            
+[36m</button>[39m
+          
+[36m</form>[39m
+        
+[36m</div>[39m
+      
+[36m</div>[39m
+    [36m</body>[39m
+
+    [0m [90m 63 
+|[39m         fireEv
+ent[33m.[39mclick(s
+creen[33m.[39mgetBy
+Role([32m'button'[3
+9m[33m,[39m { 
+name[33m:[39m 
+[35m/Validate 
+License/i[39m 
+}))[33m;[39m
+     [90m 64 |[39m
+    [31m[1m>[22m[
+39m[90m 65 |[39m   
+      expect([36mawa
+it[39m screen[33m.
+[39mfindByText([35m/
+Invalid license key/i
+[39m))[33m.[39mtoB
+eInTheDocument()[33m
+;[39m
+     [90m    |[39m 
+                     
+       
+[31m[1m^[22m[39m
+     [90m 66 |[39m 
+        expect(mockOn
+LicenseValid)[33m.[
+39mnot[33m.[39mtoHa
+veBeenCalled()[33m;
+[39m
+     [90m 67 |[39m 
+    })[33m;[39m
+     [90m 68 
+|[39m[0m
+
+      at 
+waitForWrapper (node_
+modules/@testing-libr
+ary/react/node_module
+s/@testing-library/do
+m/dist/wait-for.js:16
+3:27)
+      at node_modules
+/@testing-library/rea
+ct/node_modules/@test
+ing-library/dom/dist/
+query-helpers.js:86:3
+3
+      at 
+Object.findByText (co
+mponents/license/Lice
+nseKeyForm.test.jsx:6
+5:29)
+
+FAIL components/auth/
+SignupForm.test.jsx 
+(8.485 s)
+  SignupForm 
+Component
+    √ renders form 
+elements correctly 
+(572 ms)
+    √ displays 
+validation errors 
+for empty inputs 
+(136 ms)
+    √ validates 
+password match (149 
+ms)
+    × calls 
+onSignupSuccess with 
+user data on 
+successful 
+registration (1097 
+ms)
+    × displays error 
+message on failed 
+registration 
+(existing email) 
+(1059 ms)
+
+  ● SignupForm 
+Component › calls 
+onSignupSuccess with 
+user data on 
+successful 
+registration
+
+    expect(jest.fn())
+.toHaveBeenCalledWith
+(...expected)
+
+    Expected: 
+ObjectContaining 
+{"email": 
+"new@example.com", 
+"name": "New User"}
+
+    Number of calls: 
+0
+
+    Ignored nodes: 
+comments, script, 
+style
+    [36m<html>[39m
+      [36m<head 
+/>[39m
+      
+[36m<body>[39m
+        
+[36m<div>[39m
+          
+[36m<div[39m
+            [33mclas
+s[39m=[32m"containe
+r"[39m
+          [36m>[39m
+            
+[36m<h2[39m
+              [33mcl
+ass[39m=[32m"title"
+[39m
+            
+[36m>[39m
+              
+[0mCreate 
+Account[0m
+            
+[36m</h2>[39m
+            
+[36m<form[39m
+              [33mar
+ia-busy[39m=[32m"tr
+ue"[39m
+              [33mno
+validate[39m=[32m""
+[39m
+            
+[36m>[39m
+              
+[36m<div[39m
+                [33m
+class[39m=[32m"form
+Group"[39m
+              
+[36m>[39m
+                
+[36m<label[39m
+                  [3
+3mclass[39m=[32m"la
+bel"[39m
+                  [3
+3mfor[39m=[32m"name
+"[39m
+                
+[36m>[39m
+                  
+[0mFull Name[0m
+                
+[36m</label>[39m
+                
+[36m<input[39m
+                  [3
+3maria-invalid[39m=
+[32m"false"[39m
+                  [3
+3mclass[39m=[32m"in
+put "[39m
+                  [3
+3mdisabled[39m=[32m
+""[39m
+                  [3
+3mid[39m=[32m"name"
+[39m
+                  [3
+3mname[39m=[32m"nam
+e"[39m
+                  [3
+3mtype[39m=[32m"tex
+t"[39m
+                  [3
+3mvalue[39m=[32m"Ne
+w User"[39m
+                
+[36m/>[39m
+              
+[36m</div>[39m
+              
+[36m<div[39m
+                [33m
+class[39m=[32m"form
+Group"[39m
+              
+[36m>[39m
+                
+[36m<label[39m
+                  [3
+3mclass[39m=[32m"la
+bel"[39m
+                  [3
+3mfor[39m=[32m"emai
+l"[39m
+                
+[36m>[39m
+                  
+[0mEmail Address[0m
+                
+[36m</label>[39m
+                
+[36m<input[39m
+                  [3
+3maria-invalid[39m=
+[32m"false"[39m
+                  [3
+3mclass[39m=[32m"in
+put "[39m
+                  [3
+3mdisabled[39m=[32m
+""[39m
+                  [3
+3mid[39m=[32m"email
+"[39m
+                  [3
+3mname[39m=[32m"ema
+il"[39m
+                  [3
+3mtype[39m=[32m"ema
+il"[39m
+                  [3
+3mvalue[39m=[32m"ne
+w@example.com"[39m
+                
+[36m/>[39m
+              
+[36m</div>[39m
+              
+[36m<div[39m
+                [33m
+class[39m=[32m"form
+Group"[39m
+              
+[36m>[39m
+                
+[36m<label[39m
+                  [3
+3mclass[39m=[32m"la
+bel"[39m
+                  [3
+3mfor[39m=[32m"pass
+word"[39m
+                
+[36m>[39m
+                  
+[0mPassword[0m
+                
+[36m</label>[39m
+                
+[36m<input[39m
+                  [3
+3maria-invalid[39m=
+[32m"false"[39m
+                  [3
+3mclass[39m=[32m"in
+put "[39m
+                  [3
+3mdisabled[39m=[32m
+""[39m
+                  [3
+3mid[39m=[32m"passw
+ord"[39m
+                  [3
+3mname[39m=[32m"pas
+sword"[39m
+                  [3
+3mtype[39m=[32m"pas
+sword"[39m
+                  [3
+3mvalue[39m=[32m"pa
+ssword123"[39m
+                
+[36m/>[39m
+              
+[36m</div>[39m
+              
+[36m<div[39m
+                [33m
+class[39m=[32m"form
+Group"[39m
+              
+[36m>[39m
+                
+[36m<label[39m
+                  [3
+3mclass[39m=[32m"la
+bel"[39m
+                  [3
+3mfor[39m=[32m"conf
+irmPassword"[39m
+                
+[36m>[39m
+                  
+[0mConfirm 
+Password[0m
+                
+[36m</label>[39m
+                
+[36m<input[39m
+                  [3
+3maria-invalid[39m=
+[32m"false"[39m
+                  [3
+3mclass[39m=[32m"in
+put "[39m
+                  [3
+3mdisabled[39m=[32m
+""[39m
+                  [3
+3mid[39m=[32m"confi
+rmPassword"[39m
+                  [3
+3mname[39m=[32m"con
+firmPassword"[39m
+                  [3
+3mtype[39m=[32m"pas
+sword"[39m
+                  [3
+3mvalue[39m=[32m"pa
+ssword123"[39m
+                
+[36m/>[39m
+              
+[36m</div>[39m
+              
+[36m<button[39m
+                [33m
+class[39m=[32m"subm
+itButton"[39m
+                [33m
+disabled[39m=[32m""
+[39m
+                [33m
+type[39m=[32m"submi
+t"[39m
+              
+[36m>[39m
+                
+[36m<div[39m
+                  [3
+3mdata-testid[39m=[
+32m"loading-spinner"
+[39m
+                
+[36m>[39m
+                  
+[0mLoading...[0m
+                
+[36m</div>[39m
+              
+[36m</button>[39m
+            
+[36m</form>[39m
+          
+[36m</div>[39m
+        
+[36m</div>[39m
+      
+[36m</body>[39m
+    [36m</html>[39m
+
+    [0m [90m 57 
+|[39m
+     [90m 58 |[39m 
+        
+[36mawait[39m 
+waitFor(() 
+[33m=>[39m {
+    [31m[1m>[22m[
+39m[90m 59 |[39m   
+          expect(mock
+OnSignupSuccess)[33m
+.[39mtoHaveBeenCalle
+dWith(expect[33m.[3
+9mobjectContaining({
+     [90m    |[39m 
+                     
+                   
+[31m[1m^[22m[39m
+     [90m 60 |[39m 
+                
+email[33m:[39m [32
+m'new@example.com'[3
+9m[33m,[39m
+     [90m 61 |[39m 
+                
+name[33m:[39m 
+[32m'New User'[39m
+     [90m 62 |[39m 
+            
+}))[33m;[39m[0m
+
+      at 
+toHaveBeenCalledWith 
+(components/auth/Sign
+upForm.test.jsx:59:41
+)
+      at runWithExpen
+siveErrorDiagnosticsD
+isabled (node_modules
+/@testing-library/rea
+ct/node_modules/@test
+ing-library/dom/dist/
+config.js:47:12)
+      at 
+checkCallback (node_m
+odules/@testing-libra
+ry/react/node_modules
+/@testing-library/dom
+/dist/wait-for.js:124
+:77)
+      at checkRealTim
+ersCallback (node_mod
+ules/@testing-library
+/react/node_modules/@
+testing-library/dom/d
+ist/wait-for.js:118:1
+6)
+      at 
+Timeout.task [as 
+_onTimeout] (node_mod
+ules/jsdom/lib/jsdom/
+browser/Window.js:520
+:19)
+
+  ● SignupForm 
+Component › displays 
+error message on 
+failed registration 
+(existing email)
+
+    Unable to find 
+an element with the 
+text: /Email already 
+exists/i. This could 
+be because the text 
+is broken up by 
+multiple elements. 
+In this case, you 
+can provide a 
+function for your 
+text matcher to make 
+your matcher more 
+flexible.
+
+    Ignored nodes: 
+comments, script, 
+style
+    [36m<body>[39m
+      [36m<div>[39m
+        
+[36m<div[39m
+          [33mclass
+[39m=[32m"container"
+[39m
+        [36m>[39m
+          
+[36m<h2[39m
+            [33mclas
+s[39m=[32m"title"[
+39m
+          [36m>[39m
+            
+[0mCreate 
+Account[0m
+          
+[36m</h2>[39m
+          
+[36m<form[39m
+            [33maria
+-busy[39m=[32m"true
+"[39m
+            [33mnova
+lidate[39m=[32m""[
+39m
+          [36m>[39m
+            
+[36m<div[39m
+              [33mcl
+ass[39m=[32m"formGr
+oup"[39m
+            
+[36m>[39m
+              
+[36m<label[39m
+                [33m
+class[39m=[32m"labe
+l"[39m
+                [33m
+for[39m=[32m"name"
+[39m
+              
+[36m>[39m
+                
+[0mFull Name[0m
+              
+[36m</label>[39m
+              
+[36m<input[39m
+                [33m
+aria-invalid[39m=[3
+2m"false"[39m
+                [33m
+class[39m=[32m"inpu
+t "[39m
+                [33m
+disabled[39m=[32m""
+[39m
+                [33m
+id[39m=[32m"name"[
+39m
+                [33m
+name[39m=[32m"name"
+[39m
+                [33m
+type[39m=[32m"text"
+[39m
+                [33m
+value[39m=[32m"Exis
+ting User"[39m
+              
+[36m/>[39m
+            
+[36m</div>[39m
+            
+[36m<div[39m
+              [33mcl
+ass[39m=[32m"formGr
+oup"[39m
+            
+[36m>[39m
+              
+[36m<label[39m
+                [33m
+class[39m=[32m"labe
+l"[39m
+                [33m
+for[39m=[32m"email"
+[39m
+              
+[36m>[39m
+                
+[0mEmail Address[0m
+              
+[36m</label>[39m
+              
+[36m<input[39m
+                [33m
+aria-invalid[39m=[3
+2m"false"[39m
+                [33m
+class[39m=[32m"inpu
+t "[39m
+                [33m
+disabled[39m=[32m""
+[39m
+                [33m
+id[39m=[32m"email"
+[39m
+                [33m
+name[39m=[32m"email
+"[39m
+                [33m
+type[39m=[32m"email
+"[39m
+                [33m
+value[39m=[32m"exis
+ts@example.com"[39m
+              
+[36m/>[39m
+            
+[36m</div>[39m
+            
+[36m<div[39m
+              [33mcl
+ass[39m=[32m"formGr
+oup"[39m
+            
+[36m>[39m
+              
+[36m<label[39m
+                [33m
+class[39m=[32m"labe
+l"[39m
+                [33m
+for[39m=[32m"passwo
+rd"[39m
+              
+[36m>[39m
+                
+[0mPassword[0m
+              
+[36m</label>[39m
+              
+[36m<input[39m
+                [33m
+aria-invalid[39m=[3
+2m"false"[39m
+                [33m
+class[39m=[32m"inpu
+t "[39m
+                [33m
+disabled[39m=[32m""
+[39m
+                [33m
+id[39m=[32m"passwor
+d"[39m
+                [33m
+name[39m=[32m"passw
+ord"[39m
+                [33m
+type[39m=[32m"passw
+ord"[39m
+                [33m
+value[39m=[32m"pass
+word123"[39m
+              
+[36m/>[39m
+            
+[36m</div>[39m
+            
+[36m<div[39m
+              [33mcl
+ass[39m=[32m"formGr
+oup"[39m
+            
+[36m>[39m
+              
+[36m<label[39m
+                [33m
+class[39m=[32m"labe
+l"[39m
+                [33m
+for[39m=[32m"confir
+mPassword"[39m
+              
+[36m>[39m
+                
+[0mConfirm 
+Password[0m
+              
+[36m</label>[39m
+              
+[36m<input[39m
+                [33m
+aria-invalid[39m=[3
+2m"false"[39m
+                [33m
+class[39m=[32m"inpu
+t "[39m
+                [33m
+disabled[39m=[32m""
+[39m
+                [33m
+id[39m=[32m"confirm
+Password"[39m
+                [33m
+name[39m=[32m"confi
+rmPassword"[39m
+                [33m
+type[39m=[32m"passw
+ord"[39m
+                [33m
+value[39m=[32m"pass
+word123"[39m
+              
+[36m/>[39m
+            
+[36m</div>[39m
+            
+[36m<button[39m
+              [33mcl
+ass[39m=[32m"submit
+Button"[39m
+              [33mdi
+sabled[39m=[32m""[
+39m
+              [33mty
+pe[39m=[32m"submit"
+[39m
+            
+[36m>[39m
+              
+[36m<div[39m
+                [33m
+data-testid[39m=[32
+m"loading-spinner"[3
+9m
+              
+[36m>[39m
+                
+[0mLoading...[0m
+              
+[36m</div>[39m
+            
+[36m</button>[39m
+          
+[36m</form>[39m
+        
+[36m</div>[39m
+      
+[36m</div>[39m
+    [36m</body>[39m
+
+    [0m [90m 75 
+|[39m         fireEv
+ent[33m.[39mclick(s
+creen[33m.[39mgetBy
+Role([32m'button'[3
+9m[33m,[39m { 
+name[33m:[39m 
+[35m/Create 
+Account/i[39m 
+}))[33m;[39m
+     [90m 76 |[39m
+    [31m[1m>[22m[
+39m[90m 77 |[39m   
+      expect([36mawa
+it[39m screen[33m.
+[39mfindByText([35m/
+Email already exists/
+i[39m))[33m.[39mto
+BeInTheDocument()[33
+m;[39m
+     [90m    |[39m 
+                     
+       
+[31m[1m^[22m[39m
+     [90m 78 |[39m 
+        expect(mockOn
+SignupSuccess)[33m.
+[39mnot[33m.[39mtoH
+aveBeenCalled()[33m;
+[39m
+     [90m 79 |[39m 
+    })[33m;[39m
+     [90m 80 |[39m 
+})[33m;[39m[0m
+
+      at 
+waitForWrapper (node_
+modules/@testing-libr
+ary/react/node_module
+s/@testing-library/do
+m/dist/wait-for.js:16
+3:27)
+      at node_modules
+/@testing-library/rea
+ct/node_modules/@test
+ing-library/dom/dist/
+query-helpers.js:86:3
+3
+      at 
+Object.findByText (co
+mponents/auth/SignupF
+orm.test.jsx:77:29)
+
+FAIL components/auth/
+LoginForm.test.jsx 
+(9.429 s)
+  LoginForm Component
+    √ renders form 
+elements correctly 
+(487 ms)
+    √ displays 
+validation errors 
+for empty inputs 
+(111 ms)
+    √ displays 
+validation error for 
+invalid email (101 
+ms)
+    √ calls 
+onLoginSuccess with 
+user data on 
+successful login 
+(1164 ms)
+    × displays error 
+message on failed 
+login (1042 ms)
+    √ shows loading 
+state during 
+submission (1051 ms)
+
+  ● LoginForm 
+Component › displays 
+error message on 
+failed login
+
+    Unable to find 
+an element with the 
+text: /Invalid 
+credentials/i. This 
+could be because the 
+text is broken up by 
+multiple elements. 
+In this case, you 
+can provide a 
+function for your 
+text matcher to make 
+your matcher more 
+flexible.
+
+    Ignored nodes: 
+comments, script, 
+style
+    [36m<body>[39m
+      [36m<div>[39m
+        
+[36m<div[39m
+          [33mclass
+[39m=[32m"container"
+[39m
+        [36m>[39m
+          
+[36m<h2[39m
+            [33mclas
+s[39m=[32m"title"[
+39m
+          [36m>[39m
+            
+[0mWelcome Back[0m
+          
+[36m</h2>[39m
+          
+[36m<form[39m
+            [33maria
+-busy[39m=[32m"true
+"[39m
+            [33mnova
+lidate[39m=[32m""[
+39m
+          [36m>[39m
+            
+[36m<div[39m
+              [33mcl
+ass[39m=[32m"formGr
+oup"[39m
+            
+[36m>[39m
+              
+[36m<label[39m
+                [33m
+class[39m=[32m"labe
+l"[39m
+                [33m
+for[39m=[32m"email"
+[39m
+              
+[36m>[39m
+                
+[0mEmail Address[0m
+              
+[36m</label>[39m
+              
+[36m<input[39m
+                [33m
+aria-invalid[39m=[3
+2m"false"[39m
+                [33m
+class[39m=[32m"inpu
+t "[39m
+                [33m
+disabled[39m=[32m""
+[39m
+                [33m
+id[39m=[32m"email"
+[39m
+                [33m
+type[39m=[32m"email
+"[39m
+                [33m
+value[39m=[32m"wron
+g@example.com"[39m
+              
+[36m/>[39m
+            
+[36m</div>[39m
+            
+[36m<div[39m
+              [33mcl
+ass[39m=[32m"formGr
+oup"[39m
+            
+[36m>[39m
+              
+[36m<label[39m
+                [33m
+class[39m=[32m"labe
+l"[39m
+                [33m
+for[39m=[32m"passwo
+rd"[39m
+              
+[36m>[39m
+                
+[0mPassword[0m
+              
+[36m</label>[39m
+              
+[36m<input[39m
+                [33m
+aria-invalid[39m=[3
+2m"false"[39m
+                [33m
+class[39m=[32m"inpu
+t "[39m
+                [33m
+disabled[39m=[32m""
+[39m
+                [33m
+id[39m=[32m"passwor
+d"[39m
+                [33m
+type[39m=[32m"passw
+ord"[39m
+                [33m
+value[39m=[32m"wron
+gpassword"[39m
+              
+[36m/>[39m
+            
+[36m</div>[39m
+            
+[36m<button[39m
+              [33mcl
+ass[39m=[32m"submit
+Button"[39m
+              [33mdi
+sabled[39m=[32m""[
+39m
+              [33mty
+pe[39m=[32m"submit"
+[39m
+            
+[36m>[39m
+              
+[36m<div[39m
+                [33m
+data-testid[39m=[32
+m"loading-spinner"[3
+9m
+              
+[36m>[39m
+                
+[0mLoading...[0m
+              
+[36m</div>[39m
+            
+[36m</button>[39m
+          
+[36m</form>[39m
+        
+[36m</div>[39m
+      
+[36m</div>[39m
+    [36m</body>[39m
+
+    [0m [90m 66 
+|[39m         fireEv
+ent[33m.[39mclick(s
+creen[33m.[39mgetBy
+Role([32m'button'[3
+9m[33m,[39m { 
+name[33m:[39m 
+[35m/Sign In/i[39m 
+}))[33m;[39m
+     [90m 67 |[39m
+    [31m[1m>[22m[
+39m[90m 68 |[39m   
+      expect([36mawa
+it[39m screen[33m.
+[39mfindByText([35m/
+Invalid credentials/i
+[39m))[33m.[39mtoB
+eInTheDocument()[33m
+;[39m
+     [90m    |[39m 
+                     
+       
+[31m[1m^[22m[39m
+     [90m 69 |[39m 
+        expect(mockOn
+LoginSuccess)[33m.[
+39mnot[33m.[39mtoHa
+veBeenCalled()[33m;
+[39m
+     [90m 70 |[39m 
+    })[33m;[39m
+     [90m 71 
+|[39m[0m
+
+      at 
+waitForWrapper (node_
+modules/@testing-libr
+ary/react/node_module
+s/@testing-library/do
+m/dist/wait-for.js:16
+3:27)
+      at node_modules
+/@testing-library/rea
+ct/node_modules/@test
+ing-library/dom/dist/
+query-helpers.js:86:3
+3
+      at 
+Object.findByText (co
+mponents/auth/LoginFo
+rm.test.jsx:68:29)
+
+Test Suites: 4 
+failed, 4 passed, 8 
+total
+Tests:       5 
+failed, 48 passed, 
+53 total
+Snapshots:   2 
+passed, 2 total
+Time:        13.941 s
+Ran all test suites.

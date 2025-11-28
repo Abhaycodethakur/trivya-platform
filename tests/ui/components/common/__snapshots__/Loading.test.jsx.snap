@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Loading Component matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    aria-busy="true"
+    aria-label="Snapshot Test"
+    aria-live="polite"
+    class="container"
+    role="status"
+  >
+    <div
+      class="spinner medium"
+    />
+    <span
+      class="message"
+    >
+      Snapshot Test
+    </span>
+  </div>
+</DocumentFragment>
+`;

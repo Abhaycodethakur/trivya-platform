@@ -1,73 +1,85 @@
 import React from 'react';
-import ActivityFeed from './ActivityFeed';
-import MetricsPanel from './MetricsPanel';
-import styles from './Dashboard.module.css';
+
+import styles from './Dashboard.module.scss';
 
 /**
  * Dashboard Component
- * 
- * Main dashboard view displaying metrics, activity feed, and key insights.
- * Features luxury theme with real-time data visualization.
+ *
+ * Provides the primary control center for Trivya customers, showcasing
+ * placeholder regions for activity, metrics, usage, and settings while we
+ * build the full experience in subsequent phases.
  */
 const Dashboard = () => {
-    return (
-        <div className={styles.dashboard}>
-            <div className={styles.header}>
-                <h1 className={styles.title}>Welcome to Trivya</h1>
-                <p className={styles.subtitle}>AI-Powered Customer Support Platform</p>
-            </div>
+  return (
+    <section
+      className={styles.dashboard}
+      aria-label="AI operations dashboard overview"
+    >
+      <header className={styles.header}>
+        <p className={styles.eyebrow}>AI Workforce Command</p>
+        <h1>Welcome back, Alex!</h1>
+        <p className={styles.subcopy}>
+          Here&apos;s the latest look at your agents, performance signals, and
+          subscription usage.
+        </p>
+      </header>
 
-            <div className={styles.grid}>
-                <div className={styles.metricsSection}>
-                    <MetricsPanel />
-                </div>
-
-                <div className={styles.activitySection}>
-                    <ActivityFeed />
-                </div>
-
-                <div className={styles.quickActions}>
-                    <h3 className={styles.sectionTitle}>Quick Actions</h3>
-                    <div className={styles.actionGrid}>
-                        <button className={styles.actionCard}>
-                            <span className={styles.actionIcon}>🤖</span>
-                            <span className={styles.actionLabel}>Deploy AI Agent</span>
-                        </button>
-                        <button className={styles.actionCard}>
-                            <span className={styles.actionIcon}>📚</span>
-                            <span className={styles.actionLabel}>Add Knowledge</span>
-                        </button>
-                        <button className={styles.actionCard}>
-                            <span className={styles.actionIcon}>📊</span>
-                            <span className={styles.actionLabel}>View Analytics</span>
-                        </button>
-                        <button className={styles.actionCard}>
-                            <span className={styles.actionIcon}>⚙️</span>
-                            <span className={styles.actionLabel}>Settings</span>
-                        </button>
-                    </div>
-                </div>
-
-                <div className={styles.insights}>
-                    <h3 className={styles.sectionTitle}>AI Insights</h3>
-                    <div className={styles.insightCard}>
-                        <div className={styles.insightIcon}>💡</div>
-                        <div className={styles.insightContent}>
-                            <h4>Efficiency Boost</h4>
-                            <p>Your AI agents resolved 87% of tickets automatically this week.</p>
-                        </div>
-                    </div>
-                    <div className={styles.insightCard}>
-                        <div className={styles.insightIcon}>⚡</div>
-                        <div className={styles.insightContent}>
-                            <h4>Response Time</h4>
-                            <p>Average response time decreased by 45% compared to last month.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div className={styles.grid}>
+        <div className={`${styles.card} ${styles.activityFeed}`}>
+          <div className={styles.cardHeader}>
+            <span className={styles.pill}>Live stream</span>
+            <h2>Activity Feed</h2>
+          </div>
+          <p>
+            Real-time agent events will populate this surface. Keep an eye on
+            escalations, resolutions, and customer sentiment in one stream.
+          </p>
         </div>
-    );
+
+        <div className={`${styles.card} ${styles.metricsPanel}`}>
+          <div className={styles.cardHeader}>
+            <span className={styles.pill}>KPIs</span>
+            <h2>Metrics Panel</h2>
+          </div>
+          <p>
+            Key performance indicators, win rates, and SLA coverage will appear
+            here once the metrics service is wired in.
+          </p>
+        </div>
+
+        <div className={`${styles.card} ${styles.settingsPanel}`}>
+          <div className={styles.cardHeader}>
+            <span className={styles.pill}>Control</span>
+            <h2>Settings Panel</h2>
+          </div>
+          <p>
+            Use this panel to adjust workflows, license tiers, and compliance
+            toggles. Placeholder buttons will be replaced with live controls.
+          </p>
+          <div className={styles.settingsActions}>
+            <button type="button">Manage Variants</button>
+            <button type="button">Update Policies</button>
+            <button type="button">Escalation Rules</button>
+          </div>
+        </div>
+
+        <div className={`${styles.card} ${styles.usageMeter}`}>
+          <div className={styles.cardHeader}>
+            <span className={styles.pill}>Capacity</span>
+            <h2>Usage Meter</h2>
+          </div>
+          <p>Track how much of your plan allocation has been consumed.</p>
+          <div className={styles.meterTrack} aria-live="polite">
+            <div className={styles.meterFill} style={{ width: '62%' }} />
+          </div>
+          <div className={styles.meterLabels}>
+            <span>Current Plan</span>
+            <span>62% Utilized</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Dashboard;

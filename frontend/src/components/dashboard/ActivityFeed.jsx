@@ -1,75 +1,87 @@
 import React from 'react';
-import styles from './ActivityFeed.module.css';
+
+import styles from './ActivityFeed.module.scss';
 
 /**
  * ActivityFeed Component
- * 
- * Displays recent activity and events in the system.
- * Features luxury theme with real-time updates.
+ *
+ * Presents a live snapshot of AI agent events with premium styling. This
+ * placeholder version lists representative activities until real-time data is
+ * wired in.
  */
 const ActivityFeed = () => {
-    const activities = [
-        {
-            id: 1,
-            type: 'success',
-            icon: '✅',
-            title: 'Ticket Resolved',
-            description: 'AI Agent resolved ticket #1234',
-            time: '2 minutes ago',
-        },
-        {
-            id: 2,
-            type: 'info',
-            icon: '📚',
-            title: 'Knowledge Updated',
-            description: 'New FAQ added to knowledge base',
-            time: '15 minutes ago',
-        },
-        {
-            id: 3,
-            type: 'warning',
-            icon: '⚠️',
-            title: 'High Priority',
-            description: 'Ticket #5678 escalated to human',
-            time: '1 hour ago',
-        },
-        {
-            id: 4,
-            type: 'success',
-            icon: '🤖',
-            title: 'Agent Deployed',
-            description: 'Mini Trivya agent activated',
-            time: '2 hours ago',
-        },
-        {
-            id: 5,
-            type: 'info',
-            icon: '📊',
-            title: 'Report Generated',
-            description: 'Weekly analytics report ready',
-            time: '3 hours ago',
-        },
-    ];
+  const activities = [
+    {
+      id: 'resolved',
+      status: 'success',
+      label: 'AI resolved FAQ #1234',
+      timestamp: '2 minutes ago',
+    },
+    {
+      id: 'call',
+      status: 'processing',
+      label: 'Live call from +1-555-1234',
+      timestamp: '7 minutes ago',
+    },
+    {
+      id: 'escalated',
+      status: 'warning',
+      label: 'Escalated ticket #5678 to human',
+      timestamp: '18 minutes ago',
+    },
+    {
+      id: 'training',
+      status: 'success',
+      label: 'Mini Trivya ingested 20 new FAQs',
+      timestamp: '33 minutes ago',
+    },
+    {
+      id: 'policy',
+      status: 'processing',
+      label: 'Policy alignment check running for Trivya High',
+      timestamp: '1 hour ago',
+    },
+    {
+      id: 'audit',
+      status: 'warning',
+      label: 'Compliance audit flagged 3 conversations',
+      timestamp: '2 hours ago',
+    },
+  ];
 
-    return (
-        <div className={styles.activityFeed}>
-            <h3 className={styles.title}>Recent Activity</h3>
-            <div className={styles.feedList}>
-                {activities.map((activity) => (
-                    <div key={activity.id} className={`${styles.activityItem} ${styles[activity.type]}`}>
-                        <div className={styles.iconContainer}>
-                            <span className={styles.icon}>{activity.icon}</span>
-                        </div>
-                        <div className={styles.content}>
-                            <h4 className={styles.activityTitle}>{activity.title}</h4>
-                            <p className={styles.description}>{activity.description}</p>
-                            <span className={styles.time}>{activity.time}</span>
-                        </div>
-                    </div>
-                ))}
+  return (
+    <section className={styles.activityFeed} aria-label="Live activity feed">
+      <header className={styles.header}>
+        <p className={styles.eyebrow}>Live Stream</p>
+        <h2>Activity Feed</h2>
+        <p className={styles.subcopy}>
+          Monitor escalations, successful resolutions, and live calls as they
+          flow through your AI workforce.
+        </p>
+      </header>
+
+      <div className={styles.feedList}>
+        {activities.map((activity) => (
+          <article
+            key={activity.id}
+            className={styles.activityItem}
+            data-testid="activity-entry"
+          >
+            <span
+              className={`${styles.statusDot} ${styles[activity.status]}`}
+              aria-label={`${activity.status} status indicator`}
+              data-testid="status-indicator"
+              data-status={activity.status}
+            />
+            <div className={styles.entryContent}>
+              <p>{activity.label}</p>
+              <span>{activity.timestamp}</span>
             </div>
-        </div>
-    );
+          </article>
+        ))}
+      </div>
+    </section>
+  );
 };
 
 export default ActivityFeed;

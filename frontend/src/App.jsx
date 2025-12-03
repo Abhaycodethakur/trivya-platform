@@ -4,6 +4,8 @@ import ErrorBoundary from './components/common/ErrorBoundary';
 import LoginForm from './components/auth/LoginForm';
 import SignupForm from './components/auth/SignupForm';
 import LicenseKeyForm from './components/license/LicenseKeyForm';
+import Layout from './components/layout/Layout';
+import Dashboard from './components/dashboard/Dashboard';
 
 /**
  * App Component
@@ -73,15 +75,9 @@ function App() {
 
         // If user is logged in and has valid license, show dashboard
         return (
-            <div className={styles.dashboard}>
-                <h1 className={styles.dashboardTitle}>Welcome to Trivya Platform</h1>
-                <div className={styles.dashboardContent}>
-                    <p>Hello, {user.name}!</p>
-                    <p>License Type: {license.type}</p>
-                    <p>License Expiry: {license.expiryDate}</p>
-                    <p>This is a placeholder for the main dashboard.</p>
-                </div>
-            </div>
+            <Layout>
+                <Dashboard />
+            </Layout>
         );
     };
 

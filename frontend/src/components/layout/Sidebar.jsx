@@ -1,66 +1,90 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React from 'react';
+import PropTypes from 'prop-types';
+
 import styles from './Sidebar.module.css';
 
 /**
  * Sidebar Navigation Component
- * 
- * Provides main navigation with luxury theme styling.
- * Features: gold accents, smooth transitions, active state highlighting.
+ *
+ * Provides premium navigation with a luxury theme, placeholder links,
+ * and responsive behavior for mobile layouts.
  */
-const Sidebar = () => {
-    const location = useLocation();
-    const [isCollapsed, setIsCollapsed] = useState(false);
-
+const Sidebar = ({ isOpen, onClose }) => {
     const navItems = [
-        { path: '/dashboard', icon: '📊', label: 'Dashboard' },
-        { path: '/variants', icon: '🤖', label: 'AI Variants' },
-        { path: '/knowledge', icon: '📚', label: 'Knowledge Base' },
-        { path: '/analytics', icon: '📈', label: 'Analytics' },
-        { path: '/settings', icon: '⚙️', label: 'Settings' },
-        { path: '/compliance', icon: '🔒', label: 'Compliance' },
+        { href: '#dashboard', icon: '📊', label: 'Dashboard' },
+        { href: '#variants', icon: '🤖', label: 'Variants' },
+        { href: '#support', icon: '💬', label: 'Support' },
+        { href: '#workflows', icon: '⚙️', label: 'Workflows' },
+        { href: '#insights', icon: '📈', label: 'Insights' },
     ];
 
+    const sidebarClass = [styles.sidebar];
+    if (isOpen) {
+        sidebarClass.push(styles.open);
+    }
+
+    const handleNavClick = () => {
+        if (typeof onClose === 'function') {
+            onClose();
+        }
+    };
+
     return (
-        <aside className={`${styles.sidebar} ${isCollapsed ? styles.collapsed : ''}`}>
+        <aside className={sidebarClass.join(' ')} aria-label="Primary navigation">
             <div className={styles.logo}>
-                <h1 className={styles.logoText}>Trivya</h1>
+                <div>
+                    <p className={styles.logoText}>Trivya</p>
+                    <p className={styles.logoSubtext}>Command Suite</p>
+                </div>
                 <button
-                    className={styles.collapseBtn}
-                    onClick={() => setIsCollapsed(!isCollapsed)}
-                    aria-label="Toggle sidebar"
+                    type="button"
+                    className={styles.mobileClose}
+                    onClick={onClose}
+                    aria-label="Close navigation menu"
                 >
-                    {isCollapsed ? '→' : '←'}
+                    ×
                 </button>
             </div>
 
-            <nav className={styles.nav}>
+            <nav
+                className={styles.nav}
+                id="primary-navigation"
+                aria-label="Primary navigation"
+            >
                 {navItems.map((item) => (
-                    <Link
-                        key={item.path}
-                        to={item.path}
-                        className={`${styles.navItem} ${location.pathname === item.path ? styles.active : ''
-                            }`}
+                    <a
+                        key={item.label}
+                        href={item.href}
+                        className={styles.navItem}
+                        onClick={handleNavClick}
                     >
                         <span className={styles.icon}>{item.icon}</span>
-                        {!isCollapsed && <span className={styles.label}>{item.label}</span>}
-                    </Link>
+                        <span className={styles.label}>{item.label}</span>
+                    </a>
                 ))}
             </nav>
 
             <div className={styles.footer}>
-                {!isCollapsed && (
-                    <div className={styles.userInfo}>
-                        <div className={styles.avatar}>👤</div>
-                        <div className={styles.userDetails}>
-                            <p className={styles.userName}>User Name</p>
-                            <p className={styles.userRole}>Admin</p>
-                        </div>
+                <div className={styles.userInfo}>
+                    <div className={styles.avatar}>👤</div>
+                    <div className={styles.userDetails}>
+                        <p className={styles.userName}>Aria Stern</p>
+                        <p className={styles.userRole}>Customer Lead</p>
                     </div>
-                )}
+                </div>
             </div>
         </aside>
     );
+};
+
+Sidebar.propTypes = {
+    isOpen: PropTypes.bool,
+    onClose: PropTypes.func,
+};
+
+Sidebar.defaultProps = {
+    isOpen: false,
+    onClose: undefined,
 };
 
 export default Sidebar;

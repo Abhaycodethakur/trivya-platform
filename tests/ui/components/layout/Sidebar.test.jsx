@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import Sidebar from '../../../src/components/layout/Sidebar';
+import Sidebar from '../../components/layout/Sidebar';
 
 describe('Sidebar Component', () => {
     const renderSidebar = () => {

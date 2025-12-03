@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import TopBar from '../../../src/components/layout/TopBar';
+import TopBar from '../../components/layout/TopBar';
 
 describe('TopBar Component', () => {
     test('renders top bar', () => {

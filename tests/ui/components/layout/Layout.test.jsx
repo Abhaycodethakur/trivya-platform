@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import Layout from '../../../src/components/layout/Layout';
+import Layout from '../../components/layout/Layout';
 
 describe('Layout Component', () => {
     const renderLayout = (children) => {

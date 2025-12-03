@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import ActivityFeed from '../../../src/components/dashboard/ActivityFeed';
+import ActivityFeed from '../../components/dashboard/ActivityFeed';
 
 describe('ActivityFeed Component', () => {
     test('renders activity feed title', () => {

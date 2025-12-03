@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Dashboard from '../../../src/components/dashboard/Dashboard';
+import Dashboard from '../../components/dashboard/Dashboard';
 
 describe('Dashboard Component', () => {
     test('renders dashboard title', () => {

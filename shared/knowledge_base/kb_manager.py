@@ -7,6 +7,7 @@ updates, and retrieval across the knowledge base system.
 
 from typing import List, Dict, Any, Optional
 from datetime import datetime
+from pathlib import Path
 import sys
 import os
 
@@ -179,6 +180,24 @@ class KnowledgeBaseManager:
             error_msg = f"Document ingestion failed: {str(e)}"
             self.logger.error(error_msg, exc_info=True)
             raise KnowledgeBaseError(error_msg) from e
+
+    def add_document(
+        self,
+        file_path: str,
+        metadata: Optional[Dict[str, Any]] = None
+    ) -> str:
+        """Add a document to the knowledge base from a file path."""
+        path = Path(file_path)
+        if not path.exists():
+            raise KnowledgeBaseError(f"Document not found: {file_path}")
+
+        document = {
+            "content": path.read_text(encoding="utf-8"),
+            "metadata": metadata or {"source": path.name}
+        }
+
+        result = self.ingest_documents([document])
+        return result["document_ids"][0] if result["document_ids"] else ""
     
     def update_document(
         self,
@@ -276,6 +295,30 @@ class KnowledgeBaseManager:
             error_msg = f"Knowledge base search failed: {str(e)}"
             self.logger.error(error_msg, exc_info=True)
             raise KnowledgeBaseError(error_msg) from e
+
+    def query(
+        self,
+        query: str,
+        top_k: int = 5,
+        system_instruction: Optional[str] = None
+    ) -> str:
+        """High-level helper that returns a textual response for the query."""
+        result = self.search(query, top_k=top_k, system_instruction=system_instruction)
+        context_docs = result.get("context", [])
+
+        if not context_docs:
+            return "No relevant information found in the knowledge base."
+
+        snippets = []
+        for idx, doc in enumerate(context_docs, 1):
+            content = doc.get("content", "").strip()
+            if not content:
+                continue
+            source = doc.get("metadata", {}).get("source", f"Document {idx}")
+            snippets.append(f"[{source}] {content}")
+
+        combined = "\n".join(snippets)
+        return f"Based on the knowledge base, here's what we found:\n{combined}"
     
     def get_stats(self) -> Dict[str, Any]:
         """
@@ -303,6 +346,14 @@ class KnowledgeBaseManager:
                 "error": str(e),
                 **self.stats
             }
+
+    def list_documents(self, limit: Optional[int] = None) -> List[Dict[str, Any]]:
+        """List documents currently stored in the vector store."""
+        try:
+            return self.vector_store.list_documents(limit=limit)
+        except Exception as e:
+            self.logger.error(f"Failed to list documents: {str(e)}")
+            return []
     
     def health_check(self) -> Dict[str, Any]:
         """

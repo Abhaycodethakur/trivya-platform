@@ -1,0 +1,51 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.7, pytest-9.0.1, pluggy-1.6.0 -- C:\Users\kingthakur\AppData\Local\Programs\Python\Python311\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\kingthakur\Desktop\trivya
+plugins: anyio-4.11.0, langsmith-0.4.43, asyncio-1.3.0, cov-7.0.0, mock-3.15.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 0 items / 1 error
+
+=================================== ERRORS ====================================
+___________________ ERROR collecting tests/test_auth_api.py ___________________
+tests\test_auth_api.py:14: in <module>
+    from backend.app.main import app
+backend\app\main.py:21: in <module>
+    config = Config()
+             ^^^^^^^^
+shared\core_functions\config.py:105: in __init__
+    self.database_config = DatabaseConfig()
+                           ^^^^^^^^^^^^^^^^
+..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pydantic_settings\main.py:194: in __init__
+    super().__init__(
+E   pydantic_core._pydantic_core.ValidationError: 1 validation error for DatabaseConfig
+E   DATABASE_URL
+E     Field required [type=missing, input_value={}, input_type=dict]
+E       For further information visit https://errors.pydantic.dev/2.12/v/missing
+============================== warnings summary ===============================
+..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pythonjsonlogger\jsonlogger.py:11
+  C:\Users\kingthakur\AppData\Local\Programs\Python\Python311\Lib\site-packages\pythonjsonlogger\jsonlogger.py:11: DeprecationWarning: pythonjsonlogger.jsonlogger has been moved to pythonjsonlogger.json
+    warnings.warn(
+
+backend\app\models\user.py:13
+  C:\Users\kingthakur\Desktop\trivya\backend\app\models\user.py:13: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class UserBase(BaseModel):
+
+..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pydantic\_internal\_config.py:383
+  C:\Users\kingthakur\AppData\Local\Programs\Python\Python311\Lib\site-packages\pydantic\_internal\_config.py:383: UserWarning: Valid config keys have changed in V2:
+  * 'orm_mode' has been renamed to 'from_attributes'
+    warnings.warn(message, UserWarning)
+
+backend\app\models\user.py:28
+  C:\Users\kingthakur\Desktop\trivya\backend\app\models\user.py:28: PydanticDeprecatedSince20: Pydantic V1 style `@validator` validators are deprecated. You should migrate to Pydantic V2 style `@field_validator` validators, see the migration guide for more details. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    @validator('password')
+
+backend\app\models\user.py:36
+  C:\Users\kingthakur\Desktop\trivya\backend\app\models\user.py:36: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class UserUpdate(BaseModel):
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+ERROR tests/test_auth_api.py - pydantic_core._pydantic_core.ValidationError: ...
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+======================== 5 warnings, 1 error in 2.05s =========================

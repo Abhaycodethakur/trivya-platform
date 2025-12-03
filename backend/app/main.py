@@ -10,8 +10,9 @@ from fastapi.middleware.cors import CORSMiddleware
 import os
 import sys
 
-# Add parent directory to path for imports if running directly
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))))
+# Add project root to path for imports
+project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.insert(0, project_root)
 
 from shared.core_functions.config import Config
 from shared.core_functions.logger import get_logger

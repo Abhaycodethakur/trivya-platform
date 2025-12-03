@@ -1,8 +1,9 @@
 import chromadb
+from pathlib import Path
 from typing import List, Dict, Any, Optional
 from chromadb.config import Settings
 from shared.core_functions.config import Config
-from shared.core_functions.logger import get_logger
+from shared.core_functions.logger import get_logger, TrivyaLogger
 
 class VectorStore:
     """
@@ -10,7 +11,7 @@ class VectorStore:
     Responsible for adding documents and performing similarity searches.
     """
 
-    def __init__(self, config: Config):
+    def __init__(self, config: Config, logger: Optional[TrivyaLogger] = None):
         """
         Initialize the VectorStore with configuration.
 
@@ -18,7 +19,8 @@ class VectorStore:
             config (Config): The main configuration object.
         """
         self.config = config
-        self.logger = get_logger(self.config).get_logger("VectorStore")
+        base_logger = logger or get_logger(self.config)
+        self.logger = base_logger.get_logger("VectorStore")
         
         self.db_type = self.config.vector_db_config.VECTOR_DB_TYPE
         self.db_path = self.config.vector_db_config.VECTOR_DB_PATH
@@ -120,3 +122,64 @@ class VectorStore:
         except Exception as e:
             self.logger.error(f"Failed to delete collection: {str(e)}")
             raise
+
+    def add_document(self, file_path: str, metadata: Optional[Dict[str, Any]] = None) -> str:
+        """Add a single document from a file path to the store."""
+        try:
+            path = Path(file_path)
+            if not path.exists():
+                raise FileNotFoundError(f"Document not found: {file_path}")
+
+            content = path.read_text(encoding="utf-8")
+            document = {
+                "content": content,
+                "metadata": metadata or {"source": path.name}
+            }
+
+            document_ids = self.add_documents([document])
+            return document_ids[0] if document_ids else ""
+        except Exception as e:
+            self.logger.error(f"Failed to add document '{file_path}': {str(e)}")
+            raise
+
+    def search(self, query: str, top_k: int = 5) -> List[Dict[str, Any]]:
+        """Convenience wrapper around similarity_search for readability."""
+        return self.similarity_search(query, n_results=top_k)
+
+    def get_collection_info(self) -> Dict[str, Any]:
+        """Return high-level metadata about the underlying collection."""
+        info = {
+            "name": self.collection_name,
+            "db_type": self.db_type,
+            "path": self.db_path,
+            "document_count": 0
+        }
+        try:
+            info["document_count"] = self.collection.count()
+        except Exception as e:
+            self.logger.warning(f"Unable to fetch collection count: {str(e)}")
+        return info
+
+    def list_documents(self, limit: Optional[int] = None) -> List[Dict[str, Any]]:
+        """List documents stored in the collection (best-effort)."""
+        try:
+            include = ["metadatas", "documents", "ids"]
+            results = self.collection.get(limit=limit, include=include)
+            documents = []
+            ids = results.get("ids", []) or []
+            contents = results.get("documents", []) or []
+            metadatas = results.get("metadatas", []) or []
+
+            for idx, doc_id in enumerate(ids):
+                content = contents[idx] if idx < len(contents) else ""
+                metadata = metadatas[idx] if idx < len(metadatas) else {}
+                documents.append({
+                    "id": doc_id,
+                    "content": content,
+                    "metadata": metadata
+                })
+
+            return documents
+        except Exception as e:
+            self.logger.error(f"Failed to list documents: {str(e)}")
+            return []

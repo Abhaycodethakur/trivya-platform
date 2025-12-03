@@ -89,14 +89,6 @@ async def login_access_token(form_data: OAuth2PasswordRequestForm = Depends()) -
     }
 
 
-@router.post("/login/test-token", response_model=User)
-async def test_token(current_user: User = Depends(get_current_user)) -> Any:
-    """
-    Test access token.
-    """
-    return current_user
-
-
 # Dependency for getting current user
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/login/access-token")
 
@@ -126,3 +118,11 @@ async def get_current_user(token: str = Depends(oauth2_scheme)) -> User:
         raise HTTPException(status_code=404, detail="User not found")
         
     return user
+
+
+@router.post("/login/test-token", response_model=User)
+async def test_token(current_user: User = Depends(get_current_user)) -> Any:
+    """
+    Test access token.
+    """
+    return current_user

@@ -7,7 +7,8 @@ This module tests the authentication endpoints (signup, login).
 import os
 # Set required environment variables for testing
 os.environ["JWT_SECRET_KEY"] = "test-secret-key-for-testing-only-do-not-use-in-production"
-os.environ["ENCRYPTION_KEY"] = "test-encryption-key-32-bytes-long!!"
+os.environ["ENCRYPTION_KEY"] = "vlkK-IZqRA2F8KFg5b2mVgrUDVvCo_NRKOiZxfrr8Lo="
+os.environ["DATABASE_URL"] = "sqlite:///./test.db"
 
 from fastapi.testclient import TestClient
 import pytest

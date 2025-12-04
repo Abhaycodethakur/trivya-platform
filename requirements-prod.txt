@@ -1,0 +1,12 @@
+# ==============================================================================
+# Trivya Platform - Production Deployment Requirements
+# For cloud/server deployments (AWS, GCP, Azure, etc.)
+# Install with: pip install -r requirements-prod.txt
+# ==============================================================================
+
+# All production requirements
+-r requirements.txt
+
+# Production-specific additions
+gunicorn==23.0.0  # Production WSGI server (alternative to uvicorn)
+sentry-sdk[fastapi]==2.22.0  # Error tracking

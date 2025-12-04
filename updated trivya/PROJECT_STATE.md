@@ -48,6 +48,7 @@
 - `tests/test_rag_pipeline.py`: ✅ **Completed** (13 test scenarios, 100% pass rate)
 - `shared/knowledge_base/kb_manager.py`: ✅ **Completed**
 - `tests/test_kb_manager.py`: ✅ **Completed** (14 test scenarios, 100% pass rate)
+- `tests/integration/test_knowledge_ingestion.py`: ✅ **Completed** (5 test scenarios, 100% pass rate)
 - `tests/integration/test_rag_integration.py`: ✅ **Completed**
 
 ### Backend Authentication (Phase 2)

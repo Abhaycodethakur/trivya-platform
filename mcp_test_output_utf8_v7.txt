@@ -1,0 +1,79 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.11.7, pytest-9.0.1, pluggy-1.6.0
+rootdir: C:\Users\kingthakur\Desktop\trivya-platform
+plugins: anyio-4.11.0, langsmith-0.4.43, asyncio-1.3.0, cov-7.0.0, mock-3.15.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 8 items
+
+tests\mcp\test_document_server.py ......F.                               [100%]
+
+================================== FAILURES ===================================
+____________________ test_validation_error_missing_action _____________________
+
+document_server = <mcp_servers.knowledge.document_server.DocumentServer object at 0x000002633E5285D0>
+
+    @pytest.mark.asyncio
+    async def test_validation_error_missing_action(document_server):
+        """Test missing action field."""
+        request = MCPMessage(
+            header=MCPMessageHeader(message_type=MessageType.REQUEST, source="test_client"),
+            body={}
+        )
+    
+        response = await document_server.process_message(request.dict())
+    
+        assert response.header.message_type == MessageType.ERROR
+        assert response.body["error_code"] == "VALIDATION_ERROR"
+>       assert "Missing required field" in response.body["message"]
+E       AssertionError: assert 'Missing required field' in 'Request body is empty'
+
+tests\mcp\test_document_server.py:160: AssertionError
+---------------------------- Captured stdout setup ----------------------------
+{"timestamp": null, "level": null, "name": "trivya.mcp.document_server", "message": "Initializing MCP Server: document_server", "correlation_id": null, "server_name": "document_server"}
+{"timestamp": null, "level": null, "name": "trivya.mcp.document_server", "message": "Document Server initialized successfully", "correlation_id": null}
+----------------------------- Captured log setup ------------------------------
+INFO     trivya.mcp.document_server:base_server.py:108 Initializing MCP Server: document_server
+INFO     trivya.mcp.document_server:base_server.py:108 Document Server initialized successfully
+---------------------------- Captured stdout call -----------------------------
+{"timestamp": null, "level": null, "name": "trivya.mcp.document_server", "message": "Processing MessageType.REQUEST from test_client", "correlation_id": "c9fa7b0e-c2e9-4a5b-991b-b186db1f6602"}
+{"timestamp": null, "level": null, "name": "trivya.mcp.document_server", "message": "MCP Error: Request body is empty", "correlation_id": "c9fa7b0e-c2e9-4a5b-991b-b186db1f6602"}
+------------------------------ Captured log call ------------------------------
+INFO     trivya.mcp.document_server:base_server.py:108 Processing MessageType.REQUEST from test_client
+ERROR    trivya.mcp.document_server:base_server.py:108 MCP Error: Request body is empty
+============================== warnings summary ===============================
+..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pythonjsonlogger\jsonlogger.py:11
+  C:\Users\kingthakur\AppData\Local\Programs\Python\Python311\Lib\site-packages\pythonjsonlogger\jsonlogger.py:11: DeprecationWarning: pythonjsonlogger.jsonlogger has been moved to pythonjsonlogger.json
+    warnings.warn(
+
+tests/mcp/test_document_server.py::test_list_documents
+  C:\Users\kingthakur\Desktop\trivya-platform\tests\mcp\test_document_server.py:55: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    response = await document_server.process_message(request.dict())
+
+tests/mcp/test_document_server.py::test_ingest_document_content
+  C:\Users\kingthakur\Desktop\trivya-platform\tests\mcp\test_document_server.py:82: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    response = await document_server.process_message(request.dict())
+
+tests/mcp/test_document_server.py::test_ingest_document_file
+  C:\Users\kingthakur\Desktop\trivya-platform\tests\mcp\test_document_server.py:109: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    response = await document_server.process_message(request.dict())
+
+tests/mcp/test_document_server.py::test_get_stats
+  C:\Users\kingthakur\Desktop\trivya-platform\tests\mcp\test_document_server.py:127: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    response = await document_server.process_message(request.dict())
+
+tests/mcp/test_document_server.py::test_health_check
+  C:\Users\kingthakur\Desktop\trivya-platform\tests\mcp\test_document_server.py:143: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    response = await document_server.process_message(request.dict())
+
+tests/mcp/test_document_server.py::test_validation_error_missing_action
+  C:\Users\kingthakur\Desktop\trivya-platform\tests\mcp\test_document_server.py:156: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    response = await document_server.process_message(request.dict())
+
+tests/mcp/test_document_server.py::test_validation_error_invalid_action
+  C:\Users\kingthakur\Desktop\trivya-platform\tests\mcp\test_document_server.py:170: PydanticDeprecatedSince20: The `dict` method is deprecated; use `model_dump` instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    response = await document_server.process_message(request.dict())
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/mcp/test_document_server.py::test_validation_error_missing_action
+=================== 1 failed, 7 passed, 8 warnings in 1.20s ===================

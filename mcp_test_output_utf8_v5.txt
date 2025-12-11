@@ -1,0 +1,346 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.11.7, pytest-9.0.1, pluggy-1.6.0
+rootdir: C:\Users\kingthakur\Desktop\trivya-platform
+plugins: anyio-4.11.0, langsmith-0.4.43, asyncio-1.3.0, cov-7.0.0, mock-3.15.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collected 8 items
+
+tests\mcp\test_document_server.py EEEEEEEE                               [100%]
+
+=================================== ERRORS ====================================
+____________________ ERROR at setup of test_initialization ____________________
+
+mock_config = <test_document_server.MockConfig object at 0x0000028AF393E810>
+
+    @pytest.fixture
+    def document_server(mock_config):
+        with patch('mcp_servers.knowledge.document_server.VectorStore'), \
+             patch('mcp_servers.knowledge.document_server.RAGPipeline'), \
+             patch('mcp_servers.knowledge.document_server.KnowledgeBaseManager') as MockKBManager:
+    
+>           server = DocumentServer(config=mock_config)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\mcp\test_document_server.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+mcp_servers\knowledge\document_server.py:40: in __init__
+    super().__init__(name="document_server", config=config)
+mcp_servers\base_server.py:117: in __init__
+    self.security = SecurityManager(self.config) if SecurityManager and self.config else None
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+shared\core_functions\security.py:167: in __init__
+    self._init_encryption()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <shared.core_functions.security.TrivyaSecurity object at 0x0000028AF3947990>
+
+    def _init_encryption(self):
+        """Initialize encryption system"""
+        if not self.encryption_key:
+            # Generate a new key if not provided
+            self.encryption_key = Fernet.generate_key().decode()
+            if self.logger:
+>               self.logger.log_warning(
+                ^^^^^^^^^^^^^^^^^^^^^^^
+                    component="security_system",
+                    message="Generated new encryption key. Set ENCRYPTION_KEY in production for persistence."
+                )
+E               AttributeError: 'TrivyaLogger' object has no attribute 'log_warning'
+
+shared\core_functions\security.py:198: AttributeError
+____________________ ERROR at setup of test_list_documents ____________________
+
+mock_config = <test_document_server.MockConfig object at 0x0000028AF3A85810>
+
+    @pytest.fixture
+    def document_server(mock_config):
+        with patch('mcp_servers.knowledge.document_server.VectorStore'), \
+             patch('mcp_servers.knowledge.document_server.RAGPipeline'), \
+             patch('mcp_servers.knowledge.document_server.KnowledgeBaseManager') as MockKBManager:
+    
+>           server = DocumentServer(config=mock_config)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\mcp\test_document_server.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+mcp_servers\knowledge\document_server.py:40: in __init__
+    super().__init__(name="document_server", config=config)
+mcp_servers\base_server.py:117: in __init__
+    self.security = SecurityManager(self.config) if SecurityManager and self.config else None
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+shared\core_functions\security.py:167: in __init__
+    self._init_encryption()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <shared.core_functions.security.TrivyaSecurity object at 0x0000028AF3A54CD0>
+
+    def _init_encryption(self):
+        """Initialize encryption system"""
+        if not self.encryption_key:
+            # Generate a new key if not provided
+            self.encryption_key = Fernet.generate_key().decode()
+            if self.logger:
+>               self.logger.log_warning(
+                ^^^^^^^^^^^^^^^^^^^^^^^
+                    component="security_system",
+                    message="Generated new encryption key. Set ENCRYPTION_KEY in production for persistence."
+                )
+E               AttributeError: 'TrivyaLogger' object has no attribute 'log_warning'
+
+shared\core_functions\security.py:198: AttributeError
+_______________ ERROR at setup of test_ingest_document_content ________________
+
+mock_config = <test_document_server.MockConfig object at 0x0000028AF39EBED0>
+
+    @pytest.fixture
+    def document_server(mock_config):
+        with patch('mcp_servers.knowledge.document_server.VectorStore'), \
+             patch('mcp_servers.knowledge.document_server.RAGPipeline'), \
+             patch('mcp_servers.knowledge.document_server.KnowledgeBaseManager') as MockKBManager:
+    
+>           server = DocumentServer(config=mock_config)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\mcp\test_document_server.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+mcp_servers\knowledge\document_server.py:40: in __init__
+    super().__init__(name="document_server", config=config)
+mcp_servers\base_server.py:117: in __init__
+    self.security = SecurityManager(self.config) if SecurityManager and self.config else None
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+shared\core_functions\security.py:167: in __init__
+    self._init_encryption()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <shared.core_functions.security.TrivyaSecurity object at 0x0000028AF3A03F50>
+
+    def _init_encryption(self):
+        """Initialize encryption system"""
+        if not self.encryption_key:
+            # Generate a new key if not provided
+            self.encryption_key = Fernet.generate_key().decode()
+            if self.logger:
+>               self.logger.log_warning(
+                ^^^^^^^^^^^^^^^^^^^^^^^
+                    component="security_system",
+                    message="Generated new encryption key. Set ENCRYPTION_KEY in production for persistence."
+                )
+E               AttributeError: 'TrivyaLogger' object has no attribute 'log_warning'
+
+shared\core_functions\security.py:198: AttributeError
+_________________ ERROR at setup of test_ingest_document_file _________________
+
+mock_config = <test_document_server.MockConfig object at 0x0000028AF392AB50>
+
+    @pytest.fixture
+    def document_server(mock_config):
+        with patch('mcp_servers.knowledge.document_server.VectorStore'), \
+             patch('mcp_servers.knowledge.document_server.RAGPipeline'), \
+             patch('mcp_servers.knowledge.document_server.KnowledgeBaseManager') as MockKBManager:
+    
+>           server = DocumentServer(config=mock_config)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\mcp\test_document_server.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+mcp_servers\knowledge\document_server.py:40: in __init__
+    super().__init__(name="document_server", config=config)
+mcp_servers\base_server.py:117: in __init__
+    self.security = SecurityManager(self.config) if SecurityManager and self.config else None
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+shared\core_functions\security.py:167: in __init__
+    self._init_encryption()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <shared.core_functions.security.TrivyaSecurity object at 0x0000028AF3A567D0>
+
+    def _init_encryption(self):
+        """Initialize encryption system"""
+        if not self.encryption_key:
+            # Generate a new key if not provided
+            self.encryption_key = Fernet.generate_key().decode()
+            if self.logger:
+>               self.logger.log_warning(
+                ^^^^^^^^^^^^^^^^^^^^^^^
+                    component="security_system",
+                    message="Generated new encryption key. Set ENCRYPTION_KEY in production for persistence."
+                )
+E               AttributeError: 'TrivyaLogger' object has no attribute 'log_warning'
+
+shared\core_functions\security.py:198: AttributeError
+______________________ ERROR at setup of test_get_stats _______________________
+
+mock_config = <test_document_server.MockConfig object at 0x0000028AF363A490>
+
+    @pytest.fixture
+    def document_server(mock_config):
+        with patch('mcp_servers.knowledge.document_server.VectorStore'), \
+             patch('mcp_servers.knowledge.document_server.RAGPipeline'), \
+             patch('mcp_servers.knowledge.document_server.KnowledgeBaseManager') as MockKBManager:
+    
+>           server = DocumentServer(config=mock_config)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\mcp\test_document_server.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+mcp_servers\knowledge\document_server.py:40: in __init__
+    super().__init__(name="document_server", config=config)
+mcp_servers\base_server.py:117: in __init__
+    self.security = SecurityManager(self.config) if SecurityManager and self.config else None
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+shared\core_functions\security.py:167: in __init__
+    self._init_encryption()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <shared.core_functions.security.TrivyaSecurity object at 0x0000028AF3A8A350>
+
+    def _init_encryption(self):
+        """Initialize encryption system"""
+        if not self.encryption_key:
+            # Generate a new key if not provided
+            self.encryption_key = Fernet.generate_key().decode()
+            if self.logger:
+>               self.logger.log_warning(
+                ^^^^^^^^^^^^^^^^^^^^^^^
+                    component="security_system",
+                    message="Generated new encryption key. Set ENCRYPTION_KEY in production for persistence."
+                )
+E               AttributeError: 'TrivyaLogger' object has no attribute 'log_warning'
+
+shared\core_functions\security.py:198: AttributeError
+_____________________ ERROR at setup of test_health_check _____________________
+
+mock_config = <test_document_server.MockConfig object at 0x0000028AF3AA7B90>
+
+    @pytest.fixture
+    def document_server(mock_config):
+        with patch('mcp_servers.knowledge.document_server.VectorStore'), \
+             patch('mcp_servers.knowledge.document_server.RAGPipeline'), \
+             patch('mcp_servers.knowledge.document_server.KnowledgeBaseManager') as MockKBManager:
+    
+>           server = DocumentServer(config=mock_config)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\mcp\test_document_server.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+mcp_servers\knowledge\document_server.py:40: in __init__
+    super().__init__(name="document_server", config=config)
+mcp_servers\base_server.py:117: in __init__
+    self.security = SecurityManager(self.config) if SecurityManager and self.config else None
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+shared\core_functions\security.py:167: in __init__
+    self._init_encryption()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <shared.core_functions.security.TrivyaSecurity object at 0x0000028AF3AE5090>
+
+    def _init_encryption(self):
+        """Initialize encryption system"""
+        if not self.encryption_key:
+            # Generate a new key if not provided
+            self.encryption_key = Fernet.generate_key().decode()
+            if self.logger:
+>               self.logger.log_warning(
+                ^^^^^^^^^^^^^^^^^^^^^^^
+                    component="security_system",
+                    message="Generated new encryption key. Set ENCRYPTION_KEY in production for persistence."
+                )
+E               AttributeError: 'TrivyaLogger' object has no attribute 'log_warning'
+
+shared\core_functions\security.py:198: AttributeError
+___________ ERROR at setup of test_validation_error_missing_action ____________
+
+mock_config = <test_document_server.MockConfig object at 0x0000028AF3A86F50>
+
+    @pytest.fixture
+    def document_server(mock_config):
+        with patch('mcp_servers.knowledge.document_server.VectorStore'), \
+             patch('mcp_servers.knowledge.document_server.RAGPipeline'), \
+             patch('mcp_servers.knowledge.document_server.KnowledgeBaseManager') as MockKBManager:
+    
+>           server = DocumentServer(config=mock_config)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\mcp\test_document_server.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+mcp_servers\knowledge\document_server.py:40: in __init__
+    super().__init__(name="document_server", config=config)
+mcp_servers\base_server.py:117: in __init__
+    self.security = SecurityManager(self.config) if SecurityManager and self.config else None
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+shared\core_functions\security.py:167: in __init__
+    self._init_encryption()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <shared.core_functions.security.TrivyaSecurity object at 0x0000028AF3B80DD0>
+
+    def _init_encryption(self):
+        """Initialize encryption system"""
+        if not self.encryption_key:
+            # Generate a new key if not provided
+            self.encryption_key = Fernet.generate_key().decode()
+            if self.logger:
+>               self.logger.log_warning(
+                ^^^^^^^^^^^^^^^^^^^^^^^
+                    component="security_system",
+                    message="Generated new encryption key. Set ENCRYPTION_KEY in production for persistence."
+                )
+E               AttributeError: 'TrivyaLogger' object has no attribute 'log_warning'
+
+shared\core_functions\security.py:198: AttributeError
+___________ ERROR at setup of test_validation_error_invalid_action ____________
+
+mock_config = <test_document_server.MockConfig object at 0x0000028AE38DE590>
+
+    @pytest.fixture
+    def document_server(mock_config):
+        with patch('mcp_servers.knowledge.document_server.VectorStore'), \
+             patch('mcp_servers.knowledge.document_server.RAGPipeline'), \
+             patch('mcp_servers.knowledge.document_server.KnowledgeBaseManager') as MockKBManager:
+    
+>           server = DocumentServer(config=mock_config)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\mcp\test_document_server.py:32: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+mcp_servers\knowledge\document_server.py:40: in __init__
+    super().__init__(name="document_server", config=config)
+mcp_servers\base_server.py:117: in __init__
+    self.security = SecurityManager(self.config) if SecurityManager and self.config else None
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+shared\core_functions\security.py:167: in __init__
+    self._init_encryption()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <shared.core_functions.security.TrivyaSecurity object at 0x0000028AF3B821D0>
+
+    def _init_encryption(self):
+        """Initialize encryption system"""
+        if not self.encryption_key:
+            # Generate a new key if not provided
+            self.encryption_key = Fernet.generate_key().decode()
+            if self.logger:
+>               self.logger.log_warning(
+                ^^^^^^^^^^^^^^^^^^^^^^^
+                    component="security_system",
+                    message="Generated new encryption key. Set ENCRYPTION_KEY in production for persistence."
+                )
+E               AttributeError: 'TrivyaLogger' object has no attribute 'log_warning'
+
+shared\core_functions\security.py:198: AttributeError
+============================== warnings summary ===============================
+..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pythonjsonlogger\jsonlogger.py:11
+  C:\Users\kingthakur\AppData\Local\Programs\Python\Python311\Lib\site-packages\pythonjsonlogger\jsonlogger.py:11: DeprecationWarning: pythonjsonlogger.jsonlogger has been moved to pythonjsonlogger.json
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+ERROR tests/mcp/test_document_server.py::test_initialization - AttributeError...
+ERROR tests/mcp/test_document_server.py::test_list_documents - AttributeError...
+ERROR tests/mcp/test_document_server.py::test_ingest_document_content - Attri...
+ERROR tests/mcp/test_document_server.py::test_ingest_document_file - Attribut...
+ERROR tests/mcp/test_document_server.py::test_get_stats - AttributeError: 'Tr...
+ERROR tests/mcp/test_document_server.py::test_health_check - AttributeError: ...
+ERROR tests/mcp/test_document_server.py::test_validation_error_missing_action
+ERROR tests/mcp/test_document_server.py::test_validation_error_invalid_action
+======================== 1 warning, 8 errors in 1.45s =========================

@@ -57,7 +57,7 @@ class VectorStore:
             ids = [str(i) for i in range(len(documents))] # Simple ID generation for now, can be improved
             # In a real app, we might want to generate UUIDs or use a hash of the content
             import uuid
-            ids = [str(uuid.uuid4()) for _ in documents]
+            ids = [doc.get('id') or str(uuid.uuid4()) for doc in documents]
             
             contents = [doc['content'] for doc in documents]
             metadatas = [doc['metadata'] for doc in documents]

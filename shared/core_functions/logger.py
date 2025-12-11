@@ -223,6 +223,52 @@ class TrivyaLogger:
         
         logger.info(json.dumps(log_data))
     
+    def log_info(
+        self,
+        component: str,
+        message: str,
+        correlation_id: Optional[str] = None,
+        **kwargs
+    ):
+        """Log info message"""
+        logger = self.get_logger(component)
+        
+        log_data = {
+            'component': component,
+            'message': message,
+            'correlation_id': correlation_id or self.create_correlation_id(),
+            'timestamp': datetime.utcnow().isoformat(),
+            **kwargs
+        }
+        
+        # Sanitize sensitive data
+        log_data = self.sanitize_log_data(log_data)
+        
+        logger.info(json.dumps(log_data))
+
+    def log_warning(
+        self,
+        component: str,
+        message: str,
+        correlation_id: Optional[str] = None,
+        **kwargs
+    ):
+        """Log warning message"""
+        logger = self.get_logger(component)
+        
+        log_data = {
+            'component': component,
+            'message': message,
+            'correlation_id': correlation_id or self.create_correlation_id(),
+            'timestamp': datetime.utcnow().isoformat(),
+            **kwargs
+        }
+        
+        # Sanitize sensitive data
+        log_data = self.sanitize_log_data(log_data)
+        
+        logger.warning(json.dumps(log_data))
+
     def log_error(
         self,
         component: str,

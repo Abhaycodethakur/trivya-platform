@@ -87,6 +87,16 @@ class VectorDBConfig(BaseSettings):
     
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
+class RAGConfig(BaseSettings):
+    """RAG Server configuration schema"""
+    RAG_MODEL: str = Field(default="google/gemma-3-27b-it:free")
+    OPENROUTER_API_KEY: Optional[str] = Field(default=None)
+    MAX_CONTEXT_LENGTH: int = Field(default=1000000)
+    MAX_RETRIEVED_DOCS: int = Field(default=5)
+    SIMILARITY_THRESHOLD: float = Field(default=0.7)
+    
+    model_config = SettingsConfigDict(env_file=".env", extra="ignore")
+
 
 class Config:
     """Main configuration class"""
@@ -107,6 +117,7 @@ class Config:
         self.feature_flag_config = FeatureFlagConfig()
         self.logging_config = LoggingConfig()
         self.vector_db_config = VectorDBConfig()
+        self.rag_config = RAGConfig()
 
     def load_from_env(self) -> Dict[str, Any]:
         """Load configuration from environment variables"""
@@ -169,3 +180,6 @@ class Config:
 
     def get_api_config(self) -> APIConfig:
         return self.api_config
+
+    def get_rag_config(self) -> RAGConfig:
+        return self.rag_config

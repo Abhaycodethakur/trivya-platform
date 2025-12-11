@@ -11,26 +11,33 @@ from mcp_servers.knowledge.faq_server import FAQServer
 class TestFAQServer(unittest.IsolatedAsyncioTestCase):
     
     def setUp(self):
-        self.mock_config = MagicMock()
-        self.mock_config.env = {} # Mock env dict
-        self.mock_config.env.get = MagicMock(side_effect=lambda key, default=None: {
-            "FAQ_CACHE_SIZE": 2,
-            "FAQ_CACHE_TTL": 1
-        }.get(key, default))
-        
-        # Patch KBManager components to prevent real instantation
+        # Patch all the dependencies at the module level
+        self.config_patcher = patch('mcp_servers.knowledge.faq_server.Config')
         self.vector_store_patcher = patch('mcp_servers.knowledge.faq_server.VectorStore')
         self.rag_pipeline_patcher = patch('mcp_servers.knowledge.faq_server.RAGPipeline')
         self.kb_manager_patcher = patch('mcp_servers.knowledge.faq_server.KBManager')
         self.get_logger_patcher = patch('mcp_servers.base_server.get_logger')
+        self.security_patcher = patch('mcp_servers.base_server.SecurityManager', None)
         
+        self.MockConfig = self.config_patcher.start()
         self.MockVectorStore = self.vector_store_patcher.start()
         self.MockRAGPipeline = self.rag_pipeline_patcher.start()
         self.MockKBManager = self.kb_manager_patcher.start()
         self.MockGetLogger = self.get_logger_patcher.start()
+        self.security_patcher.start()
         
-        # Setup mock logger
+        # Setup mock config instance
+        self.mock_config = MagicMock()
+        self.mock_config.env = MagicMock()
+        self.mock_config.env.get = MagicMock(side_effect=lambda key, default=None: {
+            "FAQ_CACHE_SIZE": "2",
+            "FAQ_CACHE_TTL": "1"
+        }.get(key, str(default) if default is not None else None))
+        
+        # Setup mock logger with proper method chain
         self.mock_logger_instance = MagicMock()
+        self.mock_component_logger = MagicMock()
+        self.mock_logger_instance.get_logger = MagicMock(return_value=self.mock_component_logger)
         self.MockGetLogger.return_value = self.mock_logger_instance
         
         # Setup mock KBManager instance
@@ -40,10 +47,12 @@ class TestFAQServer(unittest.IsolatedAsyncioTestCase):
         self.server._log = MagicMock()
 
     def tearDown(self):
+        self.config_patcher.stop()
         self.vector_store_patcher.stop()
         self.rag_pipeline_patcher.stop()
         self.kb_manager_patcher.stop()
         self.get_logger_patcher.stop()
+        self.security_patcher.stop()
 
     async def test_search_faq_success(self):
         """Test successful FAQ search with simulated IO bound KB search"""

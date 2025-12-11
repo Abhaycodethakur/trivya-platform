@@ -19,7 +19,7 @@ from pydantic import BaseModel, Field
 try:
     from shared.core_functions.config import Config
     from shared.core_functions.logger import get_logger, TrivyaLogger
-    from shared.core_functions.security import SecurityManager  # Assuming exists based on prompt context
+    from shared.core_functions.security import TrivyaSecurity as SecurityManager
 except ImportError:
     # Fallback for testing or partial environment
     Config = None
@@ -124,6 +124,13 @@ class BaseMCPServer(ABC):
 
     def log(self, level: str, message: str, **kwargs):
         """Internal helper for consistent logging"""
+        if "correlation_id" in kwargs:
+            extra = kwargs.get("extra", {})
+            if extra is None:
+                extra = {}
+            extra["correlation_id"] = kwargs.pop("correlation_id")
+            kwargs["extra"] = extra
+
         if self._log:
             self._log(level, message, **kwargs)
 

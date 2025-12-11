@@ -1,0 +1,144 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.7, pytest-9.0.1, pluggy-1.6.0 -- C:\Users\kingthakur\AppData\Local\Programs\Python\Python311\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\kingthakur\Desktop\trivya-platform
+plugins: anyio-4.11.0, langsmith-0.4.43, asyncio-1.3.0, cov-7.0.0, mock-3.15.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 3 items
+
+tests/integration/test_faq_server_integration.py::test_end_to_end_async_flow ERROR [ 33%]
+tests/integration/test_faq_server_integration.py::test_cache_persistence_behavior ERROR [ 66%]
+tests/integration/test_faq_server_integration.py::test_performance_under_load ERROR [100%]
+
+=================================== ERRORS ====================================
+________________ ERROR at setup of test_end_to_end_async_flow _________________
+
+real_config = <shared.core_functions.config.Config object at 0x0000020C76A23310>
+
+    @pytest.fixture
+    def integration_faq_server(real_config):
+        """Fixture to create and manage an FAQServer instance"""
+>       server = FAQServer("integration_faq_server", real_config)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\integration\test_faq_server_integration.py:58: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <mcp_servers.knowledge.faq_server.FAQServer object at 0x0000020C765AD550>
+name = 'integration_faq_server'
+config = <shared.core_functions.config.Config object at 0x0000020C76A23310>
+
+    def __init__(self, name: str = "faq_server", config: Optional[Config] = None):
+        super().__init__(name, config)
+    
+        # Initialize Knowledge Base components
+        # Note: In a real production setup, we might inject these or use a factory
+        # For now, we instantiate them using the server's config
+        self.vector_store = VectorStore(self.config)
+        self.rag_pipeline = RAGPipeline(self.config, self.vector_store)
+        self.kb_manager = KBManager(self.config, self.vector_store, self.rag_pipeline, None)
+    
+        # Setup Cache
+        self.cache: Dict[str, Dict[str, Any]] = {}
+>       self.cache_size = self.config.get("FAQ_CACHE_SIZE", 100)
+                          ^^^^^^^^^^^^^^^
+E       AttributeError: 'Config' object has no attribute 'get'
+
+mcp_servers\knowledge\faq_server.py:38: AttributeError
+----------------------------- Captured log setup ------------------------------
+INFO     trivya.mcp.integration_faq_server:base_server.py:108 Initializing MCP Server: integration_faq_server
+INFO     trivya.VectorStore:vector_store.py:29 Initializing VectorStore with type=chromadb, path=./data/chroma
+INFO     trivya.VectorStore:vector_store.py:35 Successfully connected to ChromaDB collection: trivya_kb
+INFO     trivya.RAGPipeline:rag_pipeline.py:60 RAG Pipeline initialized
+INFO     trivya.KnowledgeBaseManager:kb_manager.py:69 Knowledge Base Manager initialized
+______________ ERROR at setup of test_cache_persistence_behavior ______________
+
+real_config = <shared.core_functions.config.Config object at 0x0000020C76B51810>
+
+    @pytest.fixture
+    def integration_faq_server(real_config):
+        """Fixture to create and manage an FAQServer instance"""
+>       server = FAQServer("integration_faq_server", real_config)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\integration\test_faq_server_integration.py:58: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <mcp_servers.knowledge.faq_server.FAQServer object at 0x0000020C76B521D0>
+name = 'integration_faq_server'
+config = <shared.core_functions.config.Config object at 0x0000020C76B51810>
+
+    def __init__(self, name: str = "faq_server", config: Optional[Config] = None):
+        super().__init__(name, config)
+    
+        # Initialize Knowledge Base components
+        # Note: In a real production setup, we might inject these or use a factory
+        # For now, we instantiate them using the server's config
+        self.vector_store = VectorStore(self.config)
+        self.rag_pipeline = RAGPipeline(self.config, self.vector_store)
+        self.kb_manager = KBManager(self.config, self.vector_store, self.rag_pipeline, None)
+    
+        # Setup Cache
+        self.cache: Dict[str, Dict[str, Any]] = {}
+>       self.cache_size = self.config.get("FAQ_CACHE_SIZE", 100)
+                          ^^^^^^^^^^^^^^^
+E       AttributeError: 'Config' object has no attribute 'get'
+
+mcp_servers\knowledge\faq_server.py:38: AttributeError
+----------------------------- Captured log setup ------------------------------
+INFO     trivya.mcp.integration_faq_server:base_server.py:108 Initializing MCP Server: integration_faq_server
+INFO     trivya.VectorStore:vector_store.py:29 Initializing VectorStore with type=chromadb, path=./data/chroma
+INFO     trivya.VectorStore:vector_store.py:35 Successfully connected to ChromaDB collection: trivya_kb
+INFO     trivya.RAGPipeline:rag_pipeline.py:60 RAG Pipeline initialized
+INFO     trivya.KnowledgeBaseManager:kb_manager.py:69 Knowledge Base Manager initialized
+________________ ERROR at setup of test_performance_under_load ________________
+
+real_config = <shared.core_functions.config.Config object at 0x0000020C76B36F90>
+
+    @pytest.fixture
+    def integration_faq_server(real_config):
+        """Fixture to create and manage an FAQServer instance"""
+>       server = FAQServer("integration_faq_server", real_config)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\integration\test_faq_server_integration.py:58: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <mcp_servers.knowledge.faq_server.FAQServer object at 0x0000020C76C6E890>
+name = 'integration_faq_server'
+config = <shared.core_functions.config.Config object at 0x0000020C76B36F90>
+
+    def __init__(self, name: str = "faq_server", config: Optional[Config] = None):
+        super().__init__(name, config)
+    
+        # Initialize Knowledge Base components
+        # Note: In a real production setup, we might inject these or use a factory
+        # For now, we instantiate them using the server's config
+        self.vector_store = VectorStore(self.config)
+        self.rag_pipeline = RAGPipeline(self.config, self.vector_store)
+        self.kb_manager = KBManager(self.config, self.vector_store, self.rag_pipeline, None)
+    
+        # Setup Cache
+        self.cache: Dict[str, Dict[str, Any]] = {}
+>       self.cache_size = self.config.get("FAQ_CACHE_SIZE", 100)
+                          ^^^^^^^^^^^^^^^
+E       AttributeError: 'Config' object has no attribute 'get'
+
+mcp_servers\knowledge\faq_server.py:38: AttributeError
+----------------------------- Captured log setup ------------------------------
+INFO     trivya.mcp.integration_faq_server:base_server.py:108 Initializing MCP Server: integration_faq_server
+INFO     trivya.VectorStore:vector_store.py:29 Initializing VectorStore with type=chromadb, path=./data/chroma
+INFO     trivya.VectorStore:vector_store.py:35 Successfully connected to ChromaDB collection: trivya_kb
+INFO     trivya.RAGPipeline:rag_pipeline.py:60 RAG Pipeline initialized
+INFO     trivya.KnowledgeBaseManager:kb_manager.py:69 Knowledge Base Manager initialized
+============================== warnings summary ===============================
+..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pythonjsonlogger\jsonlogger.py:11
+  C:\Users\kingthakur\AppData\Local\Programs\Python\Python311\Lib\site-packages\pythonjsonlogger\jsonlogger.py:11: DeprecationWarning: pythonjsonlogger.jsonlogger has been moved to pythonjsonlogger.json
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+ERROR tests/integration/test_faq_server_integration.py::test_end_to_end_async_flow - AttributeError: 'Config' object has no attribute 'get'
+ERROR tests/integration/test_faq_server_integration.py::test_cache_persistence_behavior - AttributeError: 'Config' object has no attribute 'get'
+ERROR tests/integration/test_faq_server_integration.py::test_performance_under_load - AttributeError: 'Config' object has no attribute 'get'
+======================== 1 warning, 3 errors in 1.79s =========================

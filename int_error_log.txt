@@ -1,0 +1,60 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.7, pytest-9.0.1, pluggy-1.6.0 -- C:\Users\kingthakur\AppData\Local\Programs\Python\Python311\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\kingthakur\Desktop\trivya-platform
+plugins: anyio-4.11.0, langsmith-0.4.43, asyncio-1.3.0, cov-7.0.0, mock-3.15.1
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 3 items
+
+tests/integration/test_faq_server_integration.py::test_end_to_end_async_flow ERROR [ 33%]
+tests/integration/test_faq_server_integration.py::test_cache_persistence_behavior ERROR [ 66%]
+tests/integration/test_faq_server_integration.py::test_performance_under_load ERROR [100%]
+
+=================================== ERRORS ====================================
+________________ ERROR at setup of test_end_to_end_async_flow _________________
+
+real_config = <shared.core_functions.config.Config object at 0x00000167463D68D0>
+
+    @pytest.fixture
+    def integration_faq_server(real_config):
+        """Fixture to create and manage an FAQServer instance"""
+>       server = FAQServer("integration_faq_server", real_config)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Can't instantiate abstract class FAQServer with abstract methods format_response, validate_request
+
+tests\integration\test_faq_server_integration.py:58: TypeError
+______________ ERROR at setup of test_cache_persistence_behavior ______________
+
+real_config = <shared.core_functions.config.Config object at 0x00000167463D53D0>
+
+    @pytest.fixture
+    def integration_faq_server(real_config):
+        """Fixture to create and manage an FAQServer instance"""
+>       server = FAQServer("integration_faq_server", real_config)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Can't instantiate abstract class FAQServer with abstract methods format_response, validate_request
+
+tests\integration\test_faq_server_integration.py:58: TypeError
+________________ ERROR at setup of test_performance_under_load ________________
+
+real_config = <shared.core_functions.config.Config object at 0x0000016745F5DD50>
+
+    @pytest.fixture
+    def integration_faq_server(real_config):
+        """Fixture to create and manage an FAQServer instance"""
+>       server = FAQServer("integration_faq_server", real_config)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       TypeError: Can't instantiate abstract class FAQServer with abstract methods format_response, validate_request
+
+tests\integration\test_faq_server_integration.py:58: TypeError
+============================== warnings summary ===============================
+..\..\AppData\Local\Programs\Python\Python311\Lib\site-packages\pythonjsonlogger\jsonlogger.py:11
+  C:\Users\kingthakur\AppData\Local\Programs\Python\Python311\Lib\site-packages\pythonjsonlogger\jsonlogger.py:11: DeprecationWarning: pythonjsonlogger.jsonlogger has been moved to pythonjsonlogger.json
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+ERROR tests/integration/test_faq_server_integration.py::test_end_to_end_async_flow - TypeError: Can't instantiate abstract class FAQServer with abstract methods format_response, validate_request
+ERROR tests/integration/test_faq_server_integration.py::test_cache_persistence_behavior - TypeError: Can't instantiate abstract class FAQServer with abstract methods format_response, validate_request
+ERROR tests/integration/test_faq_server_integration.py::test_performance_under_load - TypeError: Can't instantiate abstract class FAQServer with abstract methods format_response, validate_request
+======================== 1 warning, 3 errors in 1.61s =========================
